@@ -67,6 +67,20 @@ function Login({ onPageChange }) {
       // Handle error as needed
     }
   };
+
+  const signUpSeed = async () => {
+    try{
+      const response = await axios.post(`${serverUrl}/login`, { seed: ""});
+      console.log("Wallet created:", response.data);
+
+      onPageChange('Main');
+    } catch (error){
+      console.error('Error creating wallet:', error.message);
+      setError('Failed to create wallet');
+      // Handle error as needed
+    }
+
+  };
   
 
   return (
@@ -92,13 +106,13 @@ function Login({ onPageChange }) {
         </div>
       </div>
       <div id="centerSubmitButton">
-        <button className="submitSeed" type="text" onClick={loginSeed}>Create</button>
+        <button className="submitSeed" type="text" onClick={loginSeed}>Login</button>
       </div>
       <div id="centerOr">
       <h2 id="optionOr">Or</h2>
       </div>
       <div id="newSeedContainer">
-      <button id="newSeed">Create New Seed</button>
+      <button id="newSeed" type="button" onClick={signUpSeed}>Create New Account</button>
       </div>
     </div>
   );
