@@ -19,7 +19,6 @@ The project was created with a focus on simplicity, efficiency, and a touch of w
 - [Figma Designs](#)
 - [XRPL Transaction Methods](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html)
 - [Python Official Website](https://www.python.org/downloads/)
-- [Node.js Official Website](https://nodejs.org/)
 
 ## Hackathon Strategy
 Our agile-like approach with continuous integration and testing helped us create a solid MVP in record time. Frequent commits and intense collaboration are the hallmarks of this project's fast-paced development.
@@ -54,10 +53,8 @@ flask run
 - Login and account creation
 - Balance display and transaction history
 - Send and receive XRP with ease
-- Koala-themed UI for a friendly user experience
+- Koala-themed UI for a friendly and unique user experience
 
-## Contributions
-While this project was developed during a hackathon, we're open to contributions that improve the wallet's functionality and performance. Please read [CONTRIBUTING.md](#) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 - **Alex Doehring** - Back-End Wizardry
@@ -65,13 +62,11 @@ While this project was developed during a hackathon, we're open to contributions
 - **Kyle Spragg** - Front-End Maestro
 - **Colin Traenor** - Back-End Alchemist
 
-## License
-This project is licensed under the [MIT License](LICENSE.md) - see the file for details.
 
 ## Acknowledgments
 - Big shoutout to everyone who participated in HackKU 2024!
-- Our mentor who provided invaluable insights.
+- Event sponsors and staff that made it all happen.
 - Coffee, for being our trusted companion during the hackathon.
 
 ---
-> This project was crafted with care during HackKU 2024. It may not be perfect, but it sure has a pouch full of potential! Thank you to all teh organizers and sponsors for holding such a great event. Our team could not appreciate the opportunity more!
+> This project was crafted with care during HackKU 2024. It may not be perfect, but it sure has a pouch full of potential!
