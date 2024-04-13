@@ -39,10 +39,18 @@ function App() {
       <div id="koalaTitle">
         <img src={KoalaArms} alt="Koala Arms" id="koalaArms"/>
         <img src={KoalaBody} alt="Koala Body" id="koalaBody"/>
-        <button id="settingsButton" onClick={toggleSettings}>
-          <img src={SettingsIcon} alt="Settings Icon" id="buttonPng"/>
-        </button>
         <p id="koalaText">Koala Wallet</p>
+        {currentPage !== 'Login' && (
+          <>
+            <button id="settingsButton" onClick={toggleSettings}>
+              <img src={SettingsIcon} alt="Settings Icon" id="buttonPng"/>
+            </button>
+            <p id="settingsLabel">Settings</p>
+          </>
+        )}
+        {currentPage !== 'Login' && (
+          <div id="clickMeLabel">Click me</div>
+        )}
         <div id="headBorder"></div>
       </div>
       <div className="sideborders-container">
