@@ -3,11 +3,14 @@ import json
 
 testnet_url = "https://s.devnet.rippletest.net:51234/"
 
+transaction_queue = {} #dictionary to keep track of each user's transaction history
 
 def create_account():
     client = xrpl.clients.JsonRpcClient(testnet_url)
     new_wallet = xrpl.wallet.generate_faucet_wallet(client)
+    transaction_queue[new_wallet.seed] = list()
     return new_wallet
+    
 
 def get_account(seed):
     wallet = xrpl.wallet.Wallet.from_seed(seed)
@@ -36,6 +39,15 @@ def send_xrp(seed, amount, destination):
         response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet)	
     except xrpl.transaction.XRPLReliableSubmissionException as e:	
         response = f"Submit failed: {e}"
+        
+    if sending_wallet.address in transaction_queue:
+        transaction_data = { #stores the data in a dictionary
+        "Sender" : seed,
+        "Amount" : amount,
+        "Receiever" : destination,
+        "Hash" : response["hash"] if isinstance(response, dict) else None #Extract hash if available
+        }
+        transaction_queue[sending_wallet.address].append(transaction_data)
 
     return response
 
@@ -44,9 +56,15 @@ def last_transaction(seed):
     client = xrpl.clients.JsonRpcClient(testnet_url)
     try:
         last_transaction_obj = xrpl.account.get_latest_transaction(seed.address, client) #Gets the data in the form of a "Response" Object
-        return parse_transaction_data(last_transaction_obj) 
+        parse_data = parse_transaction_data(last_transaction_obj)
+        if seed.address in transaction_queue:
+            transaction_queue[seed.address].append(parse_data)
+        return parse_data
     except xrpl.asyncio.clients.XRPLRequestFailureException as e:
         return "Failed to fetch last transaction: " + e
+    
+    
+    
 
 #Parses through the Response object and gets the transaction data
 def parse_transaction_data(transaction_obj):
@@ -56,7 +74,6 @@ def parse_transaction_data(transaction_obj):
         "Sender" : tx["Account"],
         "Amount" : tx["Amount"],
         "Receiever" : tx["Destination"],
-        "Fee" : tx["Fee"],
         "Hash" : tx["hash"]
     }
     return transaction_data
