@@ -29,19 +29,19 @@ def save_transaction_history(history):
 # Load transaction history from file
 transaction_queue = load_transaction_history()
 
-
+#Creates a new wallet if a user doesn't have one
 def create_account():
     client = xrpl.clients.JsonRpcClient(testnet_url)
     new_wallet = xrpl.wallet.generate_faucet_wallet(client)
-    transaction_queue[new_wallet.seed] = list()
+    transaction_queue[new_wallet.seed] = list() #Adds new wallet to transaction_queue
     return new_wallet
     
-
+#Gets a wallet when given a seed
 def get_account(seed):
     wallet = xrpl.wallet.Wallet.from_seed(seed)
     return wallet
     
-
+#Gets an account's information such as public_key, address, etc.
 def get_info(seed):
     account_id = seed.address
     client = xrpl.clients.JsonRpcClient(testnet_url)
@@ -52,22 +52,23 @@ def get_info(seed):
     response = client.request(acct_info)
     return response.result['account_data']
 
+#Sends a specified amount of XRP to another user
 def send_xrp(seed, amount, dest):
     sending_wallet = xrpl.wallet.Wallet.from_seed(seed)
     destination = xrpl.wallet.Wallet.from_seed(dest)
     client = xrpl.clients.JsonRpcClient(testnet_url)
-    payment = xrpl.models.transactions.Payment(
+    payment = xrpl.models.transactions.Payment( #Pays another user
         account=sending_wallet.address,
         amount=xrpl.utils.xrp_to_drops(int(amount)),
         destination=destination.address,
     )
     try:	
-        response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet)	
+        response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet) #Tries to submit payment
     except xrpl.transaction.XRPLReliableSubmissionException as e:	
-        response = f"Submit failed: {e}"
+        response = f"Submit failed: {e}" #tells user if it failed
         
-    if sending_wallet.seed in transaction_queue:
-        transaction_data = { #stores the data in a dictionary
+    if sending_wallet.seed in transaction_queue: #If the seed is in the queue
+        transaction_data = { #stores the data in a dictionary in JSON format
         "Sender" : seed,
         "Amount" : amount,
         "Receiver" : destination.seed,
@@ -75,7 +76,7 @@ def send_xrp(seed, amount, dest):
         }
         transaction_queue[sending_wallet.seed].append(transaction_data)
 
-        save_transaction_history(transaction_queue)
+        save_transaction_history(transaction_queue) #Saves transaction_queue to JSON file
 
     return response
 
@@ -84,10 +85,10 @@ def last_transaction(seed):
     client = xrpl.clients.JsonRpcClient(testnet_url)
     try:
         last_transaction_obj = xrpl.account.get_latest_transaction(seed.address, client) #Gets the data in the form of a "Response" Object
-        parse_data = parse_transaction_data(last_transaction_obj)
+        parse_data = parse_transaction_data(last_transaction_obj) #Calls to parse response object
         if seed.seed in transaction_queue:
-            transaction_queue[seed.seed].append(parse_data)
-            save_transaction_history(transaction_queue)
+            transaction_queue[seed.seed].append(parse_data)  #Adds transaction to queue
+            save_transaction_history(transaction_queue) #saves transaction history
         return parse_data
     except xrpl.asyncio.clients.XRPLRequestFailureException as e:
         return "Failed to fetch last transaction: " + e
