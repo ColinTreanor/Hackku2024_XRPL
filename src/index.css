@@ -1,0 +1,86 @@
+/* index.css */
+
+/*app file */
+body{
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#koalaTitle {
+  height: 20vh;
+  width: 100vw;
+  background-color: #e4e4e4;
+  position: relative;
+  top: -1vh;
+  left: -1vh;
+}
+
+#koalaText {
+  font-size: 8rem;
+  color: #442519;
+  font-family: "Comic Sans MS", cursive;
+  position: absolute;
+  left: 25vw;
+  top: -15vh;
+}
+#headBorder{
+  border-bottom: #442519 solid 2px;
+  position: relative;
+  top: 20vh;
+  width: 82.85vw;
+  margin-left: 8.55vw;
+  margin-right: 10vw;
+}
+
+.sideborders-container {
+  margin-top: -1vh;
+  display: flex;
+  height: 100vh; /* Adjust as needed */
+}
+
+/* Borders */
+.border-left {
+  width: 8vw;
+  background-color: #e4e4e4;
+  border-right: solid 2px #442519;
+}
+
+.border-right {
+  width: 8vw; /* Adjust the width of the borders */
+  background-color: #e4e4e4; /* Border color */
+  border-left: solid 2px #442519;
+
+}
+/* Content area */
+.content {
+  flex: 1;
+  background-color: #f0f0f0; /* Background color of the content area */
+  padding: 20px; /* Adjust padding as needed */
+  display: flex;
+  justify-content: center;
+}
+
+
+/*login file */
+
+.loginContainer{
+  width: 40vw;
+  height: 85vh;
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+  background-color: #ccc;
+  position: relative;
+  border: #442519 solid 2px;
+  border-radius: .5rem;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.7);
+}
+#loginHeader{
+  font-size: 2rem;
+  margin-top: 10vh;
+}
+
+
+
