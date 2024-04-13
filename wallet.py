@@ -27,13 +27,14 @@ def get_info(seed):
     response = client.request(acct_info)
     return response.result['account_data']
 
-def send_xrp(seed, amount, destination):
+def send_xrp(seed, amount, dest):
     sending_wallet = xrpl.wallet.Wallet.from_seed(seed)
+    destination = xrpl.wallet.Wallet.from_seed(dest)
     client = xrpl.clients.JsonRpcClient(testnet_url)
     payment = xrpl.models.transactions.Payment(
         account=sending_wallet.address,
         amount=xrpl.utils.xrp_to_drops(int(amount)),
-        destination=destination,
+        destination=destination.address,
     )
     try:	
         response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet)	
