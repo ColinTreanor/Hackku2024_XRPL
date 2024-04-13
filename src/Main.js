@@ -26,7 +26,14 @@ function Main() {
       margin: '10px', // Space between columns
     },
     leftColumn: {
-      flex: 1,
+      flex: '0 0 15%', // Do not grow or shrink, set basis to 15%
+    },
+    centerColumn: {
+      flex: '0 0 70%', // Do not grow or shrink, set basis to 70%
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
     },
     centerTopContainer: {
       borderBottom: '1px solid black',
@@ -37,7 +44,7 @@ function Main() {
       paddingTop: '20px',
     },
     rightColumn: {
-      flex: 1,
+      flex: '0 0 15%', // Do not grow or shrink, set basis to 15%
     },
     header: {
       fontSize: '1em',
