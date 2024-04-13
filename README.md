@@ -1,6 +1,6 @@
 # Koala Wallet: An XRPL Digital Wallet
 
-![Koala Wallet Logo](FrontEnd/Design/Koala Body.png "Koala Wallet Logo")
+![Koala Wallet Logo](.FrontEnd/Design/Koala Body.png "Koala Wallet Logo")
 
 Welcome to the Koala Wallet GitHub repository! This repository contains the source code for a digital wallet tailored for the XRP Ledger (XRPL), designed to provide a seamless experience for managing your XRP assets.
 
