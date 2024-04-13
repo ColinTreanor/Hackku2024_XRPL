@@ -74,7 +74,7 @@ function Login() {
         <input
           id="inputSeed"
           className="input-seed"
-          type="number"
+          type="text"
           placeholder="Seed Entry"
           onFocus={handleFocus}
           onBlur={handleBlur}
@@ -89,7 +89,13 @@ function Login() {
         </div>
       </div>
       <div id="centerSubmitButton">
-      <button className="submitSeed" type="text"  onClick={loginSeed}>Create</button>
+        <button className="submitSeed" type="text" onClick={loginSeed}>Create</button>
+      </div>
+      <div id="centerOr">
+      <h2 id="optionOr">Or</h2>
+      </div>
+      <div id="newSeedContainer">
+      <button id="newSeed">Create New Seed</button>
       </div>
     </div>
   );

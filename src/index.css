@@ -142,6 +142,7 @@ body{
   border-radius: .25rem;
   color: #27375c;
   animation: fadeIn 5s ease forwards; /* Apply fadeIn animation */
+  overflow-x: auto;
 
 }
 
@@ -163,9 +164,50 @@ body{
 .submitSeed {
   position: relative;
   top: 17vh;
+  border-radius: .25rem;
+  border: outset 2px #949393;
+}
+.submitSeed:hover{
+
+  border: inset 3px #949393;
 }
 #centerSubmitButton{
-
   display: flex;
   justify-content: center;
+}
+
+#centerOr{
+  display: flex;
+  justify-content: center;
+}
+#optionOr{
+  font-size: 3rem;
+  margin-top: 20vh;
+}
+#newSeedContainer{
+  display: flex;
+  justify-content: center;
+}
+#newSeed{
+  border-radius: .25rem;
+  border: 2px solid #442519; /* Set initial border */
+  stroke: #ccc;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+}
+
+#newSeed:hover {
+  transition: 1s ease-in-out;
+  background: #a07860;
+}
+
+#newSeed:hover svg {
+  stroke-dashoffset: -480;
+}
+
+#newSeed span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
 }
