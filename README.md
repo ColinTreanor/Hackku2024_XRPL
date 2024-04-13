@@ -18,7 +18,7 @@ The Koala Wallet is an MVP designed and developed within a 36-hour hackathon. It
 The project was created with a focus on simplicity, efficiency, and a touch of whimsy, thanks to our koala-themed user interface!
 
 ## Quick Links
-- [Figma Designs](https://www.figma.com/file/qM3OGfU9tm5x5dFbPEhyt7/Koala-Wallet?type=design&node-id=0-1&mode=design&t=QMhWAgXwwScbNqDR-0))
+- [Figma Designs](https://www.figma.com/file/qM3OGfU9tm5x5dFbPEhyt7/Koala-Wallet?type=design&node-id=0-1&mode=design&t=QMhWAgXwwScbNqDR-0)
 - [XRPL Transaction Methods](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html)
 - [Python Official Website](https://www.python.org/downloads/)
 
