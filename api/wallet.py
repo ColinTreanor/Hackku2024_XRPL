@@ -1,5 +1,6 @@
 import xrpl
 import json
+import os 
 
 testnet_url = "https://s.devnet.rippletest.net:51234/"
 
@@ -11,9 +12,14 @@ transaction_queue = {} #dictionary to keep track of each user's transaction hist
 
 # Function to load transaction history from file
 def load_transaction_history():
-    # try:
-    with open(TRANSACTION_HISTORY_FILE, "r") as file:
-        return json.load(file)
+    TRANSACTION_HISTORY_FILE = 'transaction_history.json'
+    if os.path.exists(TRANSACTION_HISTORY_FILE):
+        with open(TRANSACTION_HISTORY_FILE, 'r') as file:
+            transaction_history = json.load(file)
+        return transaction_history
+    else:
+        # Handle case where file does not exist
+        return {}
 
 # Function to save transaction history to file
 def save_transaction_history(history):
