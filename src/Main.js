@@ -13,8 +13,13 @@ function Main() {
     container: {
       display: 'flex',
       justifyContent: 'space-between',
+      width: '100%', // Ensure the container fills its parent
+      maxWidth: '1200px', // Maximum width of the white box, adjust as needed
       height: '100%', // Adjust as necessary
-      margin: '10px',
+      backgroundColor: '#fff', // Assuming the white box has a white background
+      boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', // Optional: Adds shadow for depth
+      padding: '20px',
+      boxSizing: 'border-box', // Include padding in the width
     },
     column: {
       display: 'flex',
