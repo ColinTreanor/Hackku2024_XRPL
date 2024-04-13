@@ -14,8 +14,6 @@ def load_transaction_history():
     # try:
     with open(TRANSACTION_HISTORY_FILE, "r") as file:
         return json.load(file)
-    # except (FileNotFoundError, json.decoder.JSONDecodeError):
-    #     return {}
 
 # Function to save transaction history to file
 def save_transaction_history(history):
