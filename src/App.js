@@ -16,6 +16,10 @@ function App() {
   const [currentPage, setCurrentPage] = useState('Login');
   const [userSeed, setUserSeed] = useState('');
 
+  const onSetUserSeed = (seed) => {
+    setUserSeed(seed);
+};
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
 
