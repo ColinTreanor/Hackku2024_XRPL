@@ -24,13 +24,44 @@ def get_info(seed):
     response = client.request(acct_info)
     return response.result['account_data']
 
+def send_xrp(seed, amount, destination):
+    sending_wallet = xrpl.wallet.Wallet.from_seed(seed)
+    client = xrpl.clients.JsonRpcClient(testnet_url)
+    payment = xrpl.models.transactions.Payment(
+        account=sending_wallet.address,
+        amount=xrpl.utils.xrp_to_drops(int(amount)),
+        destination=destination,
+    )
+    try:	
+        response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet)	
+    except xrpl.transaction.XRPLReliableSubmissionException as e:	
+        response = f"Submit failed: {e}"
+
+    return response
+
 def last_transaction(seed):
     client = xrpl.clients.JsonRpcClient(testnet_url)
     try:
         last_transaction_obj = xrpl.account.get_latest_transaction(seed.address, client)
-        return last_transaction_obj
-    except Exception as e:
-        raise xrpl.asyncio.clients.XRPLRequestFailureException("Failed to fetch the latest transaction.") from e
+        return parse_transaction_data(last_transaction_obj)
+    except xrpl.asyncio.clients.XRPLRequestFailureException as e:
+        return "Failed to fetch last transaction: " + e
+
+
+def parse_transaction_data(transaction_obj):
+    transaction = transaction_obj.result["transactions"][0] #Going through the response object to find data we need
+    tx_details = transaction["tx"]
+    return parse_transaction_data(tx_details)
+
+def parse_tx_data(tx):
+    transaction_data = {
+        "Sender" : tx["Account"],
+        "Amount" : tx["Amount"],
+        "Receiever" : tx["Destination"],
+        "Fee" : tx["Fee"],
+        "Hash" : tx["hash"]
+    }
+    return transaction_data
     
 def wallet_to_json(wallet):
     return {
