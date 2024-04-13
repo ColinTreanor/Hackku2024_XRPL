@@ -23,13 +23,15 @@ body{
   position: absolute;
   left: 25vw;
   top: -15vh;
+  animation: fadeIn 1.5s ease forwards;
+
 }
 #headBorder{
   border-bottom: #442519 solid 2px;
   position: relative;
   top: 20vh;
   width: 82.85vw;
-  margin-left: 8.55vw;
+  margin-left: 8.56vw;
   margin-right: 10vw;
 }
 
@@ -59,28 +61,111 @@ body{
   padding: 20px; /* Adjust padding as needed */
   display: flex;
   justify-content: center;
+  overflow-y: auto;
 }
 
+.content:focus{
+  border: solid 6px #442519;
+}
 
 /*login file */
 
 .loginContainer{
   width: 40vw;
-  height: 85vh;
+  height: 85vh; 
   margin-top: 10vh;
   margin-bottom: 5vh;
   background-color: #ccc;
   position: relative;
   border: #442519 solid 2px;
   border-radius: .5rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.7);
+  animation: fadeIn 4s ease forwards; /* Apply fadeIn animation */
+
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start opacity from 0 */
+  }
+  to {
+    opacity: 1; /* End opacity at 1 */
+  }
+}
+
+#loginHeader{
+  font-size: 2.5rem;
+  margin-top: 10vh;
+  color: #442519;
+  text-align: center;
+  position: relative;
+  animation: fadeIn 4s ease forwards; /* Apply fadeIn animation */
+  text-shadow: 2px 2px 0px #a5a5a5; /* Adjust the values to control the shadow */
+  transform: perspective(100px) rotateX(10deg); /* Adjust the perspective and rotation */
+
+}
+
+.inputContainer {
+  position: relative; /* Position the border relative to the container */
+
+}
+#positionBorder{
   display: flex;
   justify-content: center;
-  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.7);
 }
-#loginHeader{
-  font-size: 2rem;
-  margin-top: 10vh;
+/* Add styles for the border element */
+.inputBorder {
+  position: absolute; /* Position the border absolutely */
+  top: 19vh; /* Align the border to the bottom of the container */
+  width: 10vw;
+  height: 2px; /* Initial height */
+  background-color: grey; /* Initial border color */
+  transition: padding 0.3s, width 0.3s; /* Transition for border width */
+  animation: fadeIn 4s ease forwards; /* Apply fadeIn animation */
+
 }
 
 
+.inputBorder.focused {
+  width: 20vw; /* Change the width when focused */
+  margin-top: .75vh;
+}
 
+/* Add styles for the input field */
+.input-seed {
+  height: 3rem;
+  position: relative;
+  top: 10vh;
+  margin-left: 14vw;
+  text-align: center;
+  border: none;
+  border-radius: .25rem;
+  color: #27375c;
+  animation: fadeIn 5s ease forwards; /* Apply fadeIn animation */
+
+}
+
+.input-seed:hover, :focus{
+  padding-top: 0.15rem; /* Increase padding on hover */
+  top: 9.5vh;
+  padding-left: .15rem;
+  padding-bottom: .15rem;
+  background-color: #9dafd7;
+  border: solid #6c7a96 2px;
+  box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.7);
+}
+.input-seed::-webkit-inner-spin-button,
+.input-seed::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.submitSeed {
+  position: relative;
+  top: 17vh;
+}
+#centerSubmitButton{
+
+  display: flex;
+  justify-content: center;
+}

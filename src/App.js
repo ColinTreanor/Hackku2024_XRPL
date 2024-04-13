@@ -8,9 +8,9 @@ import Login from './Login';
 function App() {
   const [currentPage, setCurrentPage] = useState('Login');
 
-  const setData = () => {
-    console.log("RAHHHHHHHHHHHHHHHHHH")
-  }
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div>
@@ -23,7 +23,7 @@ function App() {
         <div className="content">
           {currentPage === 'Settings' && <Settings />}
           {currentPage === 'Main' && <Main />}
-          {currentPage === 'Login' && <Login />}
+          {currentPage === 'Login' && <Login onPageChange={handlePageChange} />}
         </div>
         <div className="border-right"></div>
       </div>
