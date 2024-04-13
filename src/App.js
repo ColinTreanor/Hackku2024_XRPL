@@ -17,21 +17,32 @@ function App() {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+
   };
+
+  const toggleSettings = () => {
+    if (currentPage === 'Main') {
+      setCurrentPage('Settings');
+    } else if (currentPage === 'Settings') {
+      setCurrentPage('Main'); // Hide settings icon on other pages (e.g., Login)
+    }
+  };
+  
 
   return (
     <div>
       <div id="koalaTitle">
-        <img src={KoalaArms} id="koalaArms"/>
-        <img src={KoalaBody} id="koalaBody"/>
-        <button id="settingsButton"><img src={SettingsIcon} alt="Logo" id="buttonPng"/>
+        <img src={KoalaArms} alt="Koala Arms" id="koalaArms"/>
+        <img src={KoalaBody} alt="Koala Body" id="koalaBody"/>
+        <button id="settingsButton" onClick={toggleSettings}>
+          <img src={SettingsIcon} alt="Settings Icon" id="buttonPng"/>
         </button>
         <p id="koalaText">Koala Wallet</p>
         <div id="headBorder"></div>
       </div>
       <div className="sideborders-container">
         <div className="border-left">
-          <img src={SproutLeft} id="sproutLeft"/>
+          <img src={SproutLeft} alt="Sprout 1" id="sproutLeft"/>
         </div>
         <div className="content">
           {currentPage === 'Settings' && <Settings />}
@@ -39,7 +50,8 @@ function App() {
           {currentPage === 'Login' && <Login onPageChange={handlePageChange} />}
         </div>
         <div className="border-right">
-          <img src={SproutRight} id="sproutRight"/>
+
+          <img src={SproutRight} alt="Sprout 2" id="sproutRight"/>
         </div>
       </div>
     </div>
