@@ -75,20 +75,14 @@ def send_xrp(seed, amount, dest_public_key):
         response = f"Submit failed: {e}" #tells user if it failed
         
     if sending_wallet.public_key in transaction_queue: #If the public key is in the queue
-        sender_tx_data = { #stores the data in a dictionary in JSON format
+        tx_data = { #stores the data in a dictionary in JSON format
         "Sender" : get_public_key_from_seed(seed), #Save our public key for transaction history
         "Amount" : amount,
         "Receiver" : dest_public_key,
         "Hash" : response["hash"] if isinstance(response, dict) else None #Extract hash if available
         }
-        receiver_tx_data = {
-            "Sender" : dest_public_key,
-            "Amount" : amount,
-            "Receiver" : get_public_key_from_seed(seed), #Save our public key for transaction history
-            "Hash" : response["hash"] if isinstance(response, dict) else None #Extract hash if available
-        }
-        transaction_queue[sending_wallet.public_key].append(sender_tx_data)
-        transaction_queue[dest_public_key].append(receiver_tx_data)
+        transaction_queue[sending_wallet.public_key].append(tx_data)
+        transaction_queue[dest_public_key].append(tx_data)
 
         save_transaction_history(transaction_queue) #Saves transaction_queue to JSON file
 
@@ -99,25 +93,11 @@ def send_transaction_data(seed):
     tx_data = transaction_queue[user_key]
     transaction_list = []
     for transaction in tx_data:
+        is_sent = transaction["Sender"] == user_key
         send_data = {
             "Other" : transaction["Receiver"] if transaction["Sender"] == user_key else transaction["Sender"],
             "Amount" : transaction["Amount"],
-            "isSentTransaction" : True if transaction["Sender"] == user_key else False
+            "isSentTransaction" : is_sent
         }
         transaction_list.append(send_data)
     return transaction_list
-
-
-acc1 = create_account()
-acc2 = create_account()
-
-send_xrp(acc1.seed, 500, acc2.public_key)
-print(transaction_queue)
-send_xrp(acc1.seed, 200, acc2.public_key)
-print(transaction_queue)
-print('\n')
-
-test_list1 = send_transaction_data(acc1.seed)
-test_list2 = send_transaction_data(acc2.seed)
-print(test_list1)
-print(test_list2)
