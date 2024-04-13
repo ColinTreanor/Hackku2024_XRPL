@@ -1,17 +1,27 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS 
 import xrpl
 import json
 import wallet
+import os 
 
 app = Flask(__name__)
+CORS(app)
 
 names_queue = {} #dictionary to keep track of each user's transaction history
-NAMES_FILE = "names.json"
+
 
 # Function to load transaction history from file
+NAMES_FILE = "names.json"
+
 def load_names():
-    with open(NAMES_FILE, "r") as file:
-        return json.load(file)
+    if os.path.exists(NAMES_FILE):
+        with open(NAMES_FILE, 'r') as file:
+            names_history = json.load(file)
+        return names_history
+    else:
+        # Handle case where file does not exist
+        return {}
 
 # Function to save transaction history to file
 def save_names(history):
@@ -55,20 +65,10 @@ def account_info():
         return jsonify(account_info)
     else:
         return jsonify({'error': 'Missing seed parameter'}), 400
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
     
-    # if send_request(name, amount):
-    #     user.send_xrp(seed, amount, names_queue[name])
-        
-    # if settings_request():
-    #     user.get_info(seed)
-    #     if addName(name):
-    #         add_name(name, seed)
-
-
 def add_name(name, seed):
     names_queue[name] = seed
     save_names(names_queue)
+
+if __name__ == '__main__':
+    app.run(debug=True)
