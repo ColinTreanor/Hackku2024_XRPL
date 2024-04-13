@@ -33,23 +33,30 @@ npm install create-react-app redux react-redux axios bootstrap @mui/material @em
 
 ### Back-End Dependencies
 Make sure to have Python installed, then run:
+```bash
 pip install Flask xrpl-py pytest virtualenv
+```
 
 Remember to set up your virtual environment:
+```bash
 virtualenv myenv
 source myenv/bin/activate # On Windows use myenv\Scripts\activate
-
+```
 
 ## Usage
 To start using the Koala Wallet, clone this repository and run the following commands:
 
 For the Front-End:
+```bash
 cd path/to/frontend
 npm start
+````
 
 For the Back-End:
+```bash
 cd path/to/backend
 flask run
+```
 
 ## Features
 - Login and account creation
