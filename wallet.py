@@ -39,22 +39,20 @@ def send_xrp(seed, amount, destination):
 
     return response
 
+#Uses the seed to get the data of the last transaction
 def last_transaction(seed):
     client = xrpl.clients.JsonRpcClient(testnet_url)
     try:
-        last_transaction_obj = xrpl.account.get_latest_transaction(seed.address, client)
-        return parse_transaction_data(last_transaction_obj)
+        last_transaction_obj = xrpl.account.get_latest_transaction(seed.address, client) #Gets the data in the form of a "Response" Object
+        return parse_transaction_data(last_transaction_obj) 
     except xrpl.asyncio.clients.XRPLRequestFailureException as e:
         return "Failed to fetch last transaction: " + e
 
-
+#Parses through the Response object and gets the transaction data
 def parse_transaction_data(transaction_obj):
-    transaction = transaction_obj.result["transactions"][0] #Going through the response object to find data we need
-    tx_details = transaction["tx"]
-    return parse_transaction_data(tx_details)
-
-def parse_tx_data(tx):
-    transaction_data = {
+    transaction = transaction_obj.result["transactions"][0] #Goes through Response object and pulls Transaction data
+    tx = transaction["tx"] #Finds specific last transaction data under "tx"
+    transaction_data = { #stores the data in a dictionary
         "Sender" : tx["Account"],
         "Amount" : tx["Amount"],
         "Receiever" : tx["Destination"],
@@ -62,6 +60,7 @@ def parse_tx_data(tx):
         "Hash" : tx["hash"]
     }
     return transaction_data
+    
     
 def wallet_to_json(wallet):
     return {
