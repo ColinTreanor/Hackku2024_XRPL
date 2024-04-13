@@ -60,7 +60,7 @@ def parse_transaction_data(transaction_obj):
         "Hash" : tx["hash"]
     }
     return transaction_data
-    
+
     
 def wallet_to_json(wallet):
     return {
