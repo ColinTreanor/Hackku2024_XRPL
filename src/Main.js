@@ -4,6 +4,33 @@ function Main() {
   // State to store the balance
   const [balance, setBalance] = useState(0);
 
+  // Function to fetch the balance from the backend
+  const fetchBalance = async () => {
+    try {
+      // Replace this URL with the actual endpoint provided by your backend
+      const response = await fetch('/api/balance');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setBalance(data.balance); // Assume the response has a balance field
+    } catch (error) {
+      console.error("Failed to fetch balance:", error);
+      // Handle the error according to your app's requirements
+    }
+  };
+
+  useEffect(() => {
+    // Set up the polling interval
+    const intervalId = setInterval(() => {
+      fetchBalance(); // Call the function to update the balance
+    }, 5000); // Poll every 5000 milliseconds (5 seconds)
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []); // Empty dependency array means this effect runs once on mount
+
+
   // Placeholder content for contacts and transactions
   const contactsList = ['Alice', 'Bob', 'Charlie'];
   const transactionHistoryList = ['Transaction 1', 'Transaction 2', 'Transaction 3'];
