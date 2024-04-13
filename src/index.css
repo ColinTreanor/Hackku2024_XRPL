@@ -8,6 +8,7 @@ body{
 }
 
 #koalaTitle {
+  padding-top: 10vh;
   height: 20vh;
   width: 100vw;
   background-color: #e4e4e4;
@@ -16,23 +17,90 @@ body{
   left: -1vh;
 }
 
+#koalaArms { 
+  left: 9.25vw;
+  top: 27vh;
+  position: absolute;
+  z-index: 10;
+
+}
+#koalaBody{
+  left: 7vw;
+  position: absolute;
+  z-index: 5;
+}
+#sproutLeft{
+  position: relative;
+  top: 23vh;
+}
+#sproutRight{
+  position: relative;
+  top: 2.25vh;
+}
+@keyframes sway {
+  0% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
+  100% {
+    transform: rotate(-1.5deg);
+  }
+}
+
+#sproutLeft {
+  animation: sway 6s ease-in-out infinite; /* Adjust duration and timing function as needed */
+}
+
+#sproutRight {
+  animation: sway 6s ease-in-out infinite; /* Adjust duration and timing function as needed */
+}
+
+
+#settingsButton {
+  position: absolute;
+  z-index: 7;
+  background: transparent;
+  border: none;
+  padding: 0;
+  right: 12vw;
+}    
+#buttonPng{
+  position: absolute;
+  z-index: 7;
+  height: 6rem;
+  animation: rotate 5s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 #koalaText {
   font-size: 8rem;
   color: #442519;
   font-family: "Comic Sans MS", cursive;
   position: absolute;
   left: 25vw;
-  top: -15vh;
+  top: -12vh;
   animation: fadeIn 1.5s ease forwards;
-
 }
+
+
 #headBorder{
   border-bottom: #442519 solid 2px;
   position: relative;
   top: 20vh;
-  width: 82.85vw;
-  margin-left: 8.56vw;
+  width: 80.85vw;
+  margin-left: 9.56vw;
   margin-right: 10vw;
+  z-index: 8;
 }
 
 .sideborders-container {
@@ -43,13 +111,13 @@ body{
 
 /* Borders */
 .border-left {
-  width: 8vw;
+  width: 9vw;
   background-color: #e4e4e4;
   border-right: solid 2px #442519;
 }
 
 .border-right {
-  width: 8vw; /* Adjust the width of the borders */
+  width: 9vw; /* Adjust the width of the borders */
   background-color: #e4e4e4; /* Border color */
   border-left: solid 2px #442519;
 
@@ -62,6 +130,7 @@ body{
   display: flex;
   justify-content: center;
   overflow-y: auto;
+  z-index: 7;
 }
 
 .content:focus{
@@ -136,12 +205,14 @@ body{
   height: 3rem;
   position: relative;
   top: 10vh;
-  margin-left: 14vw;
+  margin-left: 13vw;
   text-align: center;
+  font-family: "Comic Sans MS", cursive;
   border: none;
   border-radius: .25rem;
   color: #27375c;
   animation: fadeIn 5s ease forwards; /* Apply fadeIn animation */
+  overflow-x: auto;
 
 }
 
@@ -163,9 +234,39 @@ body{
 .submitSeed {
   position: relative;
   top: 17vh;
+  font-family: "Comic Sans MS", cursive;
+  border-radius: .25rem;
+  border: outset 2px #949393;
+}
+.submitSeed:hover{
+
+  border: inset 3px #949393;
 }
 #centerSubmitButton{
-
   display: flex;
   justify-content: center;
+}
+
+#centerOr{
+  display: flex;
+  justify-content: center;
+}
+#optionOr{
+  font-size: 3rem;
+  margin-top: 20vh;
+  color: #442519
+}
+#newSeedContainer{
+  display: flex;
+  justify-content: center;
+}
+#newSeed{
+  border-radius: .25rem;
+  font-family: "Comic Sans MS", cursive;
+  border: 2px outset #949393; /* Set initial border */
+  
+}
+
+#newSeed:hover {
+  border: 3px inset #949393;
 }

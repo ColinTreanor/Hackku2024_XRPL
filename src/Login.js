@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 const serverUrl = 'http://127.0.0.1:5000';
+
 /* 
 Functionality:
 
@@ -24,7 +25,7 @@ Notes:
 */
 
 
-function Login() {
+function Login({ onPageChange }) {
   const [isFocused, setIsFocused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [userInput, setUserInput] = useState('');
@@ -57,7 +58,8 @@ function Login() {
       }
       const response = await axios.post(`api/${serverUrl}/login`, { seed: userInput, value: 'newseed' });
       console.log("Wallet created:", response.data);
-      // Handle successful response as needed
+
+      onPageChange('Main');
     } catch (error) {
       console.error('Error creating wallet:', error.message);
       setError('Failed to create wallet');
@@ -89,7 +91,13 @@ function Login() {
         </div>
       </div>
       <div id="centerSubmitButton">
-      <button className="submitSeed" type="text"  onClick={loginSeed}>Create</button>
+        <button className="submitSeed" type="text" onClick={loginSeed}>Create</button>
+      </div>
+      <div id="centerOr">
+      <h2 id="optionOr">Or</h2>
+      </div>
+      <div id="newSeedContainer">
+      <button id="newSeed">Create New Seed</button>
       </div>
     </div>
   );
