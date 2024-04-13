@@ -4,7 +4,7 @@ import React from 'react';
 function Settings() {
   return (
     <div>
-      <h1>We testing this shit</h1>
+      <h1>Shit is getting tested just differently</h1>
     </div>
   );
 }
