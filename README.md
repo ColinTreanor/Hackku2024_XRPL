@@ -55,7 +55,7 @@ flask run
 - Login and account creation
 - Balance display and transaction history
 - Send and receive XRP with ease
-- Koala-themed UI for a friendly and unique user experience
+- Koala-themed UI for a friendly and unique user experience, custom widgets designed in Figma
 
 
 ## Authors
