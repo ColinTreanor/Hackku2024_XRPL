@@ -41,14 +41,14 @@ def send_xrp(seed, amount, dest):
     except xrpl.transaction.XRPLReliableSubmissionException as e:	
         response = f"Submit failed: {e}"
         
-    if sending_wallet.address in transaction_queue:
+    if sending_wallet.seed in transaction_queue:
         transaction_data = { #stores the data in a dictionary
         "Sender" : seed,
         "Amount" : amount,
-        "Receiever" : destination,
+        "Receiver" : destination.seed,
         "Hash" : response["hash"] if isinstance(response, dict) else None #Extract hash if available
         }
-        transaction_queue[sending_wallet.address].append(transaction_data)
+        transaction_queue[sending_wallet.seed].append(transaction_data)
 
     return response
 
@@ -58,8 +58,8 @@ def last_transaction(seed):
     try:
         last_transaction_obj = xrpl.account.get_latest_transaction(seed.address, client) #Gets the data in the form of a "Response" Object
         parse_data = parse_transaction_data(last_transaction_obj)
-        if seed.address in transaction_queue:
-            transaction_queue[seed.address].append(parse_data)
+        if seed.seed in transaction_queue:
+            transaction_queue[seed.seed].append(parse_data)
         return parse_data
     except xrpl.asyncio.clients.XRPLRequestFailureException as e:
         return "Failed to fetch last transaction: " + e
@@ -74,7 +74,7 @@ def parse_transaction_data(transaction_obj):
     transaction_data = { #stores the data in a dictionary
         "Sender" : tx["Account"],
         "Amount" : tx["Amount"],
-        "Receiever" : tx["Destination"],
+        "Receiver" : tx["Destination"],
         "Hash" : tx["hash"]
     }
     return transaction_data
@@ -86,9 +86,11 @@ def wallet_to_json(wallet):
         "secret": wallet.seed,
         "public_key": wallet.public_key
     }
+#acc1 = get_account("sEdVnyag2smPo1mY6Xxv8Go2L9LWVTg")
+#acc2 = get_account("sEd7Wri652hHHVDCZsotvZTCGEb4SqB")
+account1 = create_account()
+account2 = create_account()
 
-my_account = get_account("sEdVnyag2smPo1mY6Xxv8Go2L9LWVTg")
-# print(my_account)
-# print()
-# print(get_info(my_account))
-print(last_transaction(my_account))
+send_xrp(account1.seed, 500, account2.seed)
+
+print(transaction_queue[account1.seed])
