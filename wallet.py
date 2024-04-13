@@ -9,8 +9,8 @@ def create_account():
     new_wallet = xrpl.wallet.generate_faucet_wallet(client)
     return new_wallet
 
-def get_account(key):
-    wallet = xrpl.wallet.Wallet.from_seed(key)
+def get_account(seed):
+    wallet = xrpl.wallet.Wallet.from_seed(seed)
     return wallet
     
 
@@ -27,10 +27,10 @@ def get_info(seed):
 def last_transaction(seed):
     client = xrpl.clients.JsonRpcClient(testnet_url)
     try:
-        last_transaction_obj = xrpl.account.get_latest_transaction(seed.address)
-    except xrpl.XRPLRequestFailureException:
-        print("ERROR: Transaction failed")
-    return last_transaction_obj
+        last_transaction_obj = xrpl.account.get_latest_transaction(seed.address, client)
+        return last_transaction_obj
+    except Exception as e:
+        raise xrpl.asyncio.clients.XRPLRequestFailureException("Failed to fetch the latest transaction.") from e
     
 def wallet_to_json(wallet):
     return {
@@ -38,8 +38,9 @@ def wallet_to_json(wallet):
         "secret": wallet.seed,
         "public_key": wallet.public_key
     }
-    
-# print(get_account("sEdVnyag2smPo1mY6Xxv8Go2L9LWVTg"))
+
+my_account = get_account("sEdVnyag2smPo1mY6Xxv8Go2L9LWVTg")
+# print(my_account)
 # print()
-# print(get_info(get_account("sEdVnyag2smPo1mY6Xxv8Go2L9LWVTg")))
-print(last_transaction("sEdVnyag2smPo1mY6Xxv8Go2L9LWVTg"))
+# print(get_info(my_account))
+print(last_transaction(my_account))
