@@ -3,7 +3,28 @@ import json
 
 testnet_url = "https://s.devnet.rippletest.net:51234/"
 
+# File to store transaction history
+TRANSACTION_HISTORY_FILE = "transaction_history.json"
+
 transaction_queue = {} #dictionary to keep track of each user's transaction history
+
+
+# Function to load transaction history from file
+def load_transaction_history():
+    # try:
+    with open(TRANSACTION_HISTORY_FILE, "r") as file:
+        return json.load(file)
+    # except (FileNotFoundError, json.decoder.JSONDecodeError):
+    #     return {}
+
+# Function to save transaction history to file
+def save_transaction_history(history):
+    with open(TRANSACTION_HISTORY_FILE, "w") as file:
+        json.dump(history, file)
+
+# Load transaction history from file
+transaction_queue = load_transaction_history()
+
 
 def create_account():
     client = xrpl.clients.JsonRpcClient(testnet_url)
@@ -50,6 +71,8 @@ def send_xrp(seed, amount, dest):
         }
         transaction_queue[sending_wallet.seed].append(transaction_data)
 
+        save_transaction_history(transaction_queue)
+
     return response
 
 #Uses the seed to get the data of the last transaction
@@ -60,6 +83,7 @@ def last_transaction(seed):
         parse_data = parse_transaction_data(last_transaction_obj)
         if seed.seed in transaction_queue:
             transaction_queue[seed.seed].append(parse_data)
+            save_transaction_history(transaction_queue)
         return parse_data
     except xrpl.asyncio.clients.XRPLRequestFailureException as e:
         return "Failed to fetch last transaction: " + e
@@ -86,11 +110,4 @@ def wallet_to_json(wallet):
         "secret": wallet.seed,
         "public_key": wallet.public_key
     }
-#acc1 = get_account("sEdVnyag2smPo1mY6Xxv8Go2L9LWVTg")
-#acc2 = get_account("sEd7Wri652hHHVDCZsotvZTCGEb4SqB")
-account1 = create_account()
-account2 = create_account()
 
-send_xrp(account1.seed, 500, account2.seed)
-
-print(transaction_queue[account1.seed])
