@@ -34,7 +34,7 @@ npm install create-react-app redux react-redux axios bootstrap @mui/material @em
 ### Back-End Dependencies
 Make sure to have Python installed, then run:
 ```bash
-pip install Flask xrpl-py pytest virtualenv
+pip install Flask xrpl-py pytest virtualenv # Run each on it's own
 ```
 
 Remember to set up your virtual environment:
