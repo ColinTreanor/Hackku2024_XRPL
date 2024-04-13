@@ -56,7 +56,8 @@ function Login({ onPageChange }) {
         setError('Seed must be 31 characters long');
         return;
       }
-      const response = await axios.post(`api/${serverUrl}/login`, { seed: userInput, value: 'newseed' });
+      //const response = await axios.post(`api/${serverUrl}/login`, { seed: userInput, value: 'newseed' });
+      const response = await axios.post(`${serverUrl}/login`, { seed: userInput});
       console.log("Wallet created:", response.data);
 
       onPageChange('Main');
