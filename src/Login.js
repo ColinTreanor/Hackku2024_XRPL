@@ -25,7 +25,7 @@ Notes:
 */
 
 
-function Login({ onPageChange }) {
+function Login({ onPageChange, onSetUserSeed }) {
   const [isFocused, setIsFocused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [userInput, setUserInput] = useState('');
@@ -60,7 +60,9 @@ function Login({ onPageChange }) {
       const response = await axios.post(`${serverUrl}/login`, { seed: userInput});
       console.log("Wallet created:", response.data);
 
-      onPageChange('Main');
+      onSetUserSeed(response.data.seed); // Update user seed state
+  onPageChange('Main');
+
     } catch (error) {
       console.error('Error creating wallet:', error.message);
       setError('Failed to create wallet');
@@ -73,7 +75,9 @@ function Login({ onPageChange }) {
       const response = await axios.post(`${serverUrl}/login`, { seed: ""});
       console.log("Wallet created:", response.data);
 
-      onPageChange('Main');
+      onSetUserSeed(response.data.seed); // Update user seed state
+  onPageChange('Main');
+
     } catch (error){
       console.error('Error creating wallet:', error.message);
       setError('Failed to create wallet');

@@ -14,6 +14,7 @@ import Login from './Login';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Login');
+  const [userSeed, setUserSeed] = useState('');
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -45,10 +46,10 @@ function App() {
           <img src={SproutLeft} alt="Sprout 1" id="sproutLeft"/>
         </div>
         <div className="content">
-          {currentPage === 'Settings' && <Settings />}
-          {currentPage === 'Main' && <Main />}
-          {currentPage === 'Login' && <Login onPageChange={handlePageChange} />}
-        </div>
+        {currentPage === 'Settings' && <Settings />}
+        {currentPage === 'Main' && <Main userSeed={userSeed} />}
+        {currentPage === 'Login' && <Login onPageChange={handlePageChange} onSetUserSeed={setUserSeed} />}
+      </div>
         <div className="border-right">
 
           <img src={SproutRight} alt="Sprout 2" id="sproutRight"/>

@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+const serverUrl = 'http://127.0.0.1:5000'; // Update with your server URL
 
-function Main() {
+function Main({userSeed}) {
   // State to store the balance
   const [balance, setBalance] = useState(0);
 
   // Function to fetch the balance from the backend
-  const fetchBalance = async () => {
-    try {
-      // Replace this URL with the actual endpoint provided by your backend
-      const response = await fetch('/api/balance');
+const fetchBalance = async () => {
+  try {
+    // Use the userSeed in your API call
+    const response = await axios.post(`${serverUrl}/balance`, { seed: userSeed });
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -21,14 +23,8 @@ function Main() {
   };
 
   useEffect(() => {
-    // Set up the polling interval
-    const intervalId = setInterval(() => {
-      fetchBalance(); // Call the function to update the balance
-    }, 5000); // Poll every 5000 milliseconds (5 seconds)
-
-    // Clean up the interval on component unmount
-    return () => clearInterval(intervalId);
-  }, []); // Empty dependency array means this effect runs once on mount
+    // Fetch balance using userSeed here
+  }, [userSeed]); // Depend on userSeed so this runs when it changes
 
 
   // Placeholder content for contacts and transactions
