@@ -52,15 +52,22 @@ def get_info(seed):
     response = client.request(acct_info)
     return response.result['account_data']
 
+def get_address_from_public_key(public_key):
+    return xrpl.core.keypairs.derive_classic_address(public_key)
+
+def get_public_key_from_seed(seed):
+    wallet = xrpl.wallet.Wallet.from_seed(seed)
+    return wallet.public_key
+
 #Sends a specified amount of XRP to another user
-def send_xrp(seed, amount, dest):
+def send_xrp(seed, amount, dest_public_key):
     sending_wallet = xrpl.wallet.Wallet.from_seed(seed)
-    destination = xrpl.wallet.Wallet.from_seed(dest)
+    dest = get_address_from_public_key(dest_public_key)
     client = xrpl.clients.JsonRpcClient(testnet_url)
     payment = xrpl.models.transactions.Payment( #Pays another user
         account=sending_wallet.address,
         amount=xrpl.utils.xrp_to_drops(int(amount)),
-        destination=destination.address,
+        destination=dest,
     )
     try:	
         response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet) #Tries to submit payment
@@ -69,9 +76,9 @@ def send_xrp(seed, amount, dest):
         
     if sending_wallet.seed in transaction_queue: #If the seed is in the queue
         transaction_data = { #stores the data in a dictionary in JSON format
-        "Sender" : seed,
+        "Sender" : get_public_key_from_seed(seed), #Save our public key for transaction history
         "Amount" : amount,
-        "Receiver" : destination.seed,
+        "Receiver" : dest_public_key,
         "Hash" : response["hash"] if isinstance(response, dict) else None #Extract hash if available
         }
         transaction_queue[sending_wallet.seed].append(transaction_data)
@@ -101,9 +108,9 @@ def parse_transaction_data(transaction_obj):
     transaction = transaction_obj.result["transactions"][0] #Goes through Response object and pulls Transaction data
     tx = transaction["tx"] #Finds specific last transaction data under "tx"
     transaction_data = { #stores the data in a dictionary
-        "Sender" : tx["Account"],
+        "Sender" : get_public_key_from_seed(tx["Account"]), #gets public key
         "Amount" : tx["Amount"],
-        "Receiver" : tx["Destination"],
+        "Receiver" : get_public_key_from_seed(tx["Destination"]), #gets public key
         "Hash" : tx["hash"]
     }
     return transaction_data

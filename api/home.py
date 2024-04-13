@@ -49,9 +49,9 @@ def send_xrp():
     data = request.json
     seed = data.get('seed')
     amount = data.get('amount')
-    recipient = data.get('recipient')
-    if seed and amount and recipient:
-        response = wallet.send_xrp(seed, amount, recipient)
+    public_key = data.get('recipient')
+    if seed and amount and public_key:
+        response = wallet.send_xrp(seed, amount, public_key)
         return jsonify(response)
     else:
         return jsonify({'error': 'Missing required parameters'}), 400
@@ -67,8 +67,8 @@ def account_info():
     else:
         return jsonify({'error': 'Missing seed parameter'}), 400
     
-def add_name(name, seed):
-    names_queue[name] = seed
+def add_name(name, public_key):
+    names_queue[name] = public_key
     save_names(names_queue)
 
 if __name__ == '__main__':
