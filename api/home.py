@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS 
-import xrpl
 import json
 import wallet
 import os 
+
 
 app = Flask(__name__)
 CORS(app)
@@ -38,9 +38,10 @@ def login():
     seed = data.get('seed')
     if seed:
         user_wallet = wallet.get_account(seed)
+        return jsonify({'address': user_wallet.classic_address, 'public_key': user_wallet.public_key, 'secret': user_wallet.seed})
     else:
         user_wallet = wallet.create_account()
-    return jsonify({'address': user_wallet.classic_address, 'public_key': user_wallet.public_key, 'secret': user_wallet.seed})
+        return jsonify({'address': user_wallet.classic_address, 'public_key': user_wallet.public_key, 'secret': user_wallet.seed})
 
 # Endpoint for sending XRP
 @app.route('/send_xrp', methods=['POST'])
