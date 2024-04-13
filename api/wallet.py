@@ -33,7 +33,7 @@ transaction_queue = load_transaction_history()
 def create_account():
     client = xrpl.clients.JsonRpcClient(testnet_url)
     new_wallet = xrpl.wallet.generate_faucet_wallet(client)
-    transaction_queue[new_wallet.seed] = list() #Adds new wallet to transaction_queue
+    transaction_queue[new_wallet.public_key] = list() #Adds new wallet to transaction_queue
     return new_wallet
     
 #Gets a wallet when given a seed
@@ -74,43 +74,50 @@ def send_xrp(seed, amount, dest_public_key):
     except xrpl.transaction.XRPLReliableSubmissionException as e:	
         response = f"Submit failed: {e}" #tells user if it failed
         
-    if sending_wallet.seed in transaction_queue: #If the seed is in the queue
-        transaction_data = { #stores the data in a dictionary in JSON format
+    if sending_wallet.public_key in transaction_queue: #If the public key is in the queue
+        sender_tx_data = { #stores the data in a dictionary in JSON format
         "Sender" : get_public_key_from_seed(seed), #Save our public key for transaction history
         "Amount" : amount,
         "Receiver" : dest_public_key,
         "Hash" : response["hash"] if isinstance(response, dict) else None #Extract hash if available
         }
-        transaction_queue[sending_wallet.seed].append(transaction_data)
+        receiver_tx_data = {
+            "Sender" : dest_public_key,
+            "Amount" : amount,
+            "Receiver" : get_public_key_from_seed(seed), #Save our public key for transaction history
+            "Hash" : response["hash"] if isinstance(response, dict) else None #Extract hash if available
+        }
+        transaction_queue[sending_wallet.public_key].append(sender_tx_data)
+        transaction_queue[dest_public_key].append(receiver_tx_data)
 
         save_transaction_history(transaction_queue) #Saves transaction_queue to JSON file
 
     return response
 
-#Uses the seed to get the data of the last transaction
-def last_transaction(seed):
-    client = xrpl.clients.JsonRpcClient(testnet_url)
-    try:
-        last_transaction_obj = xrpl.account.get_latest_transaction(seed.address, client) #Gets the data in the form of a "Response" Object
-        parse_data = parse_transaction_data(last_transaction_obj) #Calls to parse response object
-        if seed.seed in transaction_queue:
-            transaction_queue[seed.seed].append(parse_data)  #Adds transaction to queue
-            save_transaction_history(transaction_queue) #saves transaction history
-        return parse_data
-    except xrpl.asyncio.clients.XRPLRequestFailureException as e:
-        return "Failed to fetch last transaction: " + e
-    
-    
-    
+def send_transaction_data(seed):
+    user_key = get_public_key_from_seed(seed)
+    tx_data = transaction_queue[user_key]
+    transaction_list = []
+    for transaction in tx_data:
+        send_data = {
+            "Other" : transaction["Receiver"] if transaction["Sender"] == user_key else transaction["Sender"],
+            "Amount" : transaction["Amount"],
+            "isSentTransaction" : True if transaction["Sender"] == user_key else False
+        }
+        transaction_list.append(send_data)
+    return transaction_list
 
-#Parses through the Response object and gets the transaction data
-def parse_transaction_data(transaction_obj):
-    transaction = transaction_obj.result["transactions"][0] #Goes through Response object and pulls Transaction data
-    tx = transaction["tx"] #Finds specific last transaction data under "tx"
-    transaction_data = { #stores the data in a dictionary
-        "Sender" : get_public_key_from_seed(tx["Account"]), #gets public key
-        "Amount" : tx["Amount"],
-        "Receiver" : get_public_key_from_seed(tx["Destination"]), #gets public key
-        "Hash" : tx["hash"]
-    }
-    return transaction_data
+
+acc1 = create_account()
+acc2 = create_account()
+
+send_xrp(acc1.seed, 500, acc2.public_key)
+print(transaction_queue)
+send_xrp(acc1.seed, 200, acc2.public_key)
+print(transaction_queue)
+print('\n')
+
+test_list1 = send_transaction_data(acc1.seed)
+test_list2 = send_transaction_data(acc2.seed)
+print(test_list1)
+print(test_list2)

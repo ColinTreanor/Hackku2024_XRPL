@@ -70,6 +70,11 @@ def account_info():
 def add_name(name, public_key):
     names_queue[name] = public_key
     save_names(names_queue)
+    
+    
+def send_transaction_info(seed):
+    pass
+
 
 if __name__ == '__main__':
     app.run(debug=True)
