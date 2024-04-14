@@ -25,7 +25,7 @@ Notes:
 */
 
 
-function Login({ onPageChange, onSetUserSeed }) {
+function Login({ onPageChange, onSetUserSeed, onSetPublicKey}) {
   const [isFocused, setIsFocused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [userInput, setUserInput] = useState('');
@@ -60,6 +60,7 @@ function Login({ onPageChange, onSetUserSeed }) {
       const response = await axios.post(`${serverUrl}/login`, { seed: userInput});
       console.log("Wallet created:", response.data);
       onSetUserSeed(userInput); // Update user seed state
+      onSetPublicKey(response.data["public_key"])
   onPageChange('Main');
 
     } catch (error) {
