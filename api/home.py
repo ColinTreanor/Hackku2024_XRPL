@@ -67,7 +67,7 @@ def account_info():
     else:
         return jsonify({'error': 'Missing seed parameter'}), 400
     
-@app.route('/account_balance', methods=['GET'])
+@app.route('/account_balance', methods=['POST'])
 def account_balance():
     data = request.json
     seed = data.get('seed')
