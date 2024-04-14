@@ -7,8 +7,9 @@ function Main({userSeed, public_key}) {
   // State to store the balance
   const [balance, setBalance] = useState('');
   const [otherBalance, setOtherBalance] = useState('');
-  // State to control the visibility of the send modal
+  // State to control the visibility of the send and sell modal
   const [showSendModal, setShowSendModal] = useState(false);
+  const [showSellModal, setShowSellModal] = useState(false);
   // States for the form inside the modal
   const [recipientPublicKey, setRecipientPublicKey] = useState('');
   const [amountToSend, setAmountToSend] = useState('');
@@ -115,6 +116,17 @@ function Main({userSeed, public_key}) {
     refresh_balance();
   };
 
+   // Function to handle the sell button click
+   const handleSellClick = () => {
+    setShowSellModal(true);
+  };
+
+  // Function to handle closing the sell modal
+  const handleCloseSellModal = () => {
+    setShowSellModal(false);
+  };
+  
+
   // Placeholder content for contacts and transactions
   const contactsList = ['Alice', 'Bob', 'Charlie'];
   // const transactionHistoryList = ['Transaction 1', 'Transaction 2', 'Transaction 3'];
@@ -137,7 +149,7 @@ function Main({userSeed, public_key}) {
         <div className="centerTopContainer">
           <h1 className="balance">Balance: {balance}XRP</h1>
           <button className="button" onClick={handleSendClick}>Send</button>
-          <button className="button" onClick={() => {}}>Sell</button>
+          <button className="button" onClick={handleSellClick}>Sell</button>
           <button className="button" onClick={refresh_balance}>Refresh Balance</button>
         </div>
         <div className="centerBottomContainer">
@@ -176,6 +188,16 @@ function Main({userSeed, public_key}) {
               onChange={e => setAmountToSend(e.target.value)}
             />
             <button className="button" onClick={handleSendSubmit}>Submit</button>
+          </div>
+        </div>
+      )}
+
+      {/* Sell Modal */}
+      {showSellModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={handleCloseSellModal}>&times;</span>
+            <h2>Congratulations! You have sold all of your XRP!</h2>
           </div>
         </div>
       )}
