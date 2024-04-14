@@ -20,10 +20,10 @@ function Main({userSeed, public_key}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const [loadSend, setLoadSend] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   const simulateRefresh = () => {
     setIsRefreshing(true);
-
     // Delay the state change to false to simulate a refresh
     setTimeout(() => {
       setIsRefreshing(false);
@@ -144,23 +144,24 @@ function Main({userSeed, public_key}) {
     <div id="mainContainer">
       {/* First Column */}
       <div id="leftColumn" className="column">
-        <h2 className="header">Contacts</h2>
-        <ul className="list">
+        <h2 id="headerContacts">Contacts</h2>
+        <ul id="listContacts">
           {contactsList.map((contact, index) => (
-            <li key={index} className="listItem">{contact}</li>
+            <p key={index} className="listItem">{contact}</p>
           ))}
         </ul>
       </div>
 
       {/* Second Column */}
       <div id="centerColumn" className="column">
-        <div className="centerTopContainer">
-          <h1 className="balance">Balance: {balance}XRP</h1>
-          <button className="button" onClick={handleSendClick}>Send</button>
-          <button className="button" onClick={handleSellClick}>Sell</button>
-          <button className="button" onClick={refresh_balance}>Refresh Balance</button>
-        </div>
-        <div className="centerBottomContainer">
+        <div>
+          <h1 className="balance">Balance: {balance}</h1>
+          <h2 id="unitToken">XRP</h2>
+          <button id="buttonOne" onClick={handleSendClick}>Send</button>
+          <button id="buttonTwo" onClick={handleSellClick}>Sell</button>
+          <button id="buttonThree" onClick={refresh_balance}>Refresh Balance</button>
+          {isRefreshing && <div className="loading-wheel"></div>}
+
           <div id="koalaGraph">
             <img src={KoalaGraph} alt="Koala Graph" id="koalaGraph"/>
           </div>
@@ -169,12 +170,12 @@ function Main({userSeed, public_key}) {
 
       {/* Third Column */}
       <div id="rightColumn" className="column">
-        <h2 className="header">Last Transaction</h2>
-        <ul className="list">
+        <h2 id="headerTransaction">Last Transaction</h2>
+        <ul className="transactionList">
         {Object.entries(transactionInfo).map(([key, value]) => (
-        key === "Amount" ? <li key={key}> 
+        key === "Amount" ? <p className="itemTransaction" key={key}> 
         {`${transactionInfo.isSentTransaction ? "-" : "+"}${Math.abs(value) / 1000000} Recipient: ${transactionInfo.Other}`}
-        </li> : null))}
+        </p> : null))}
         </ul>
       </div>
       
