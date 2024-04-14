@@ -2,29 +2,33 @@
 import { useState, useEffect} from 'react';
 import axios from 'axios';
 
-import KoalaOnTree from './Design/Koala_on_Tree.png';
+import KoalaOnTree from './Design/Koala_on_Tree.png'; 
 
-const serverUrl = 'http://127.0.0.1:5000';
+const serverUrl = 'http://127.0.0.1:5000'; // Update with your server URL
 
-
+// Settings component
 function Settings( {userSeed} ) {
 
-  const [publicKey, setPublicKey] = useState(null);
-  const [address, setAddress] = useState(null);
-  const [seedKey, setSeedKey] = useState(null);
+  const [publicKey, setPublicKey] = useState(null); // State to store the public key
+  const [address, setAddress] = useState(null); // State to store the address
+  const [seedKey, setSeedKey] = useState(null); // State to store the seed
   
+  // Function to fetch the account information from the backend
   const get_account_info = async () => {
     try {
 
+      // Send a POST request to the server
       const response = await axios.post(`${serverUrl}/account_info`, { seed: userSeed });
       console.log(response.data);
 
       const responseData = response.data;
 
+      // Update the state variables with the response data
       setPublicKey(responseData.public_key)
       setAddress(responseData.address)
       setSeedKey(responseData.seed)
 
+      // Handle the error according to your app's requirements
     } catch (err) {
       if (err.response) {
         // The request was made, but the server responded with a non-2xx status code
@@ -43,6 +47,7 @@ function Settings( {userSeed} ) {
     get_account_info(); //when page renders, gets info
   }, [userSeed])
 
+  // Render the account information
   return (
     <div id="mainAccount">
       {publicKey &&(

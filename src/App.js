@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import './index.css';
 
+// Import images
 import KoalaArms from './Design/Koala_Arms.png';
 import KoalaBody from './Design/Koala_Body.png';
 import SproutLeft from './Design/Sprout1.png';
 import SproutRight from './Design/Sprout2.png';
 import SettingsIcon from './Design/Settings_Gear.png';
 
+// Import components to set App.js as Parent component
 import Settings from './Settings';
 import Main from './Main';
 import Login from './Login';
 
-
+// App component
 function App() {
   const [currentPage, setCurrentPage] = useState('Login');
   const [userSeed, setUserSeed] = useState('');
@@ -39,7 +41,7 @@ function App() {
     }
   };
   
-
+// Return the App component
   return (
     <div>
       <div id="koalaTitle">
