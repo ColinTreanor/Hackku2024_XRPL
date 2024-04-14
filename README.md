@@ -1,12 +1,12 @@
-# Koala Pouch: An XRPL Digital Wallet
+# Koala Walla: An XRPL Digital Wallet
 
-![Koala Pouch Logo](src/Design/Koala_Body.png)  Howdy Mate!
+![Koala Walla Logo](src/Design/Koala_Body.png)  Howdy Mate!
 
-Welcome to the Koala Pouch GitHub repository! This repository contains the source code for a digital wallet tailored for the XRP Ledger (XRPL), designed to provide a seamless experience for managing your XRP assets, user's favorite way of handling their marsupial money!
+Welcome to the Koala Walla GitHub repository! This repository contains the source code for a digital wallet tailored for the XRP Ledger (XRPL), designed to provide a seamless experience for managing your XRP assets, user's favorite way of handling their marsupial money!
 
 ## Project Overview
 
-The Koala Pouch is a carefully designed and developed MVP from a 36-hour hackathon. This section outlines our tech stack, learning experiences, and code organization.
+The Koala Walla is a carefully designed and developed MVP from a 36-hour hackathon. This section outlines our tech stack, learning experiences, and code organization.
 
 ### Tech Stack
 
@@ -26,7 +26,7 @@ Our repository is structured with clear dependency management and logical sectio
 ### Front-End Structure
 
 Figma: Crafting a Koala-fied User Interface
-For the design phase of Koala Pouch's front end, Figma stood out as our go-to tool. Its ease of use and advanced capabilities for creating multi-layered design workspaces enabled us to bring the charm of our koala-themed UI to life. 
+For the design phase of Koala Walla's front end, Figma stood out as our go-to tool. Its ease of use and advanced capabilities for creating multi-layered design workspaces enabled us to bring the charm of our koala-themed UI to life. 
 
 Figma's intuitive user interface was a major advantage for our team. Its straightforward layout allowed us to jump right into the design process without a steep learning curve, which is essential during the crunch time of a hackathon.
 
@@ -35,9 +35,9 @@ The ability to work with a multi-layered workspace in Figma was pivotal for desi
 Here's an example of a complex design we were able to create thanks to Figma:
 ![Koala Graph](src/Design/XRP_Koala_Graph.png)
 
-Figma made it easy to share assets among team members, ensuring consistency across our design. Components and design tokens could be reused, which maintained a uniform aesthetic throughout Koala Pouch's interface. 
+Figma made it easy to share assets among team members, ensuring consistency across our design. Components and design tokens could be reused, which maintained a uniform aesthetic throughout Koala Walla's interface. 
 
-The efficiency and flexibility Figma provided significantly contributed to the delightful design experience that Koala Pouch offers.
+The efficiency and flexibility Figma provided significantly contributed to the delightful design experience that Koala Walla offers.
 
 NPM:
 NPM provided us with a straightforward approach to manage the numerous packages our project depends upon. It allowed us to:
@@ -61,7 +61,7 @@ Our team's proficiency in Python played a significant role in choosing Flask. Si
 
 Flask's simplicity and the team's familiarity with Python significantly accelerated our development speed. It allowed us to focus on the logic and features specific to the XRPL without getting bogged down by the framework itself.
 
-By integrating Flask into our tech stack, we ensured that Koala Pouch's back-end was not only robust and efficient but also a product of a framework that resonates with our team's expertise and the Python community's best practices.
+By integrating Flask into our tech stack, we ensured that Koala Walla's back-end was not only robust and efficient but also a product of a framework that resonates with our team's expertise and the Python community's best practices.
 
 ## Quick Links
 - [Figma Designs](https://www.figma.com)
@@ -72,7 +72,7 @@ By integrating Flask into our tech stack, we ensured that Koala Pouch's back-end
 Our agile-like approach with continuous integration and testing helped us create a solid MVP in record time. Frequent commits and intense collaboration are the hallmarks of this project's fast-paced development.
 
 ## Getting Started
-Before you dive into the Koala Pouch, make sure you've got all the prerequisites installed.
+Before you dive into the Koala Walla, make sure you've got all the prerequisites installed.
 
 ### Front-End Dependencies
 ```bash
@@ -92,7 +92,7 @@ source myenv/bin/activate # On Windows use myenv\Scripts\activate
 ```
 
 ## Usage
-To start using the Koala Pouch, clone this repository and run the following commands:
+To start using the Koala Walla, clone this repository and run the following commands:
 
 For the Front-End:
 ```bash
@@ -126,4 +126,4 @@ flask run
 - Sleep, rare, but treasured when found.
 
 ---
-> This project was crafted with care during HackKU 2024. It may not be perfect, but it sure has a pouch full of potential!
+> This project was crafted with care during HackKU 2024. It may not be perfect, but it sure has a Walla full of potential!
