@@ -254,8 +254,9 @@ body{
 }
 
 .submitSeed {
-  position: relative;
-  top: 17vh;
+  position: absolute;
+  top: 40vh;
+  height: 1.5rem;
   font-family: "Comic Sans MS", cursive;
   border-radius: .25rem;
   border: outset 2px #949393;
@@ -268,8 +269,8 @@ body{
   justify-content: center;
 }
 #loadingSubmit { 
-  top: 5vh;
-  left: 2vh;
+  top: 15vh;
+  left: 5vw;
   position: relative;
   font-family: "Comic Sans MS", cursive;
 }
