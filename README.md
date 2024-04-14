@@ -112,7 +112,7 @@ flask run
 - Send and receive XRP with ease
 - Koala-themed UI for a friendly and unique user experience -- custom widgets designed in Figma
 
-## Authors
+## Authors - All Computer Science Majors at KU
 - **Alex Doehring** - Back-End Wizardry: Lead development of back end functions and Python code, and figureheaded the programming for transaction history.
 - **Nicholas Holmes** - Front-End Artisan: Oversaw UI design, creating objects in Figma and porting them in a way that allowed functionality, as well as working with JavaScript and CSS files.
 - **Kyle Spragg** - Front-End Maestro: Programmed majority of UI animations in CSS and assisted in front and back end integration within JavaScript files.
