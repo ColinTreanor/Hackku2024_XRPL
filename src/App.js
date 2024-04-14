@@ -47,7 +47,7 @@ function App() {
       <div id="koalaTitle">
         <img src={KoalaArms} alt="Koala Arms" id="koalaArms"/>
         <img src={KoalaBody} alt="Koala Body" id="koalaBody"/>
-        <p id="koalaText">Koala Pouch</p>
+        <p id="koalaText">Koala Walla</p>
         {currentPage !== 'Login' && (
           <>
             <button id="settingsButton" onClick={toggleSettings}>
