@@ -67,6 +67,16 @@ def account_info():
     else:
         return jsonify({'error': 'Missing seed parameter'}), 400
     
+@app.route('/account_balance', methods=['POST'])
+def account_balance():
+    data = request.json
+    seed = data.get('seed')
+    if seed:
+        account_balance = wallet.get_balance(seed)
+        return jsonify(account_balance)
+    else:
+        return jsonify({'error': 'Missing seed parameter'}), 400
+    
 def add_name(name, public_key):
     names_queue[name] = public_key
     save_names(names_queue)

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 const serverUrl = 'http://127.0.0.1:5000'; // Update with your server URL
 
+
 function Main({userSeed}) {
   // State to store the balance
   const [balance, setBalance] = useState(0);

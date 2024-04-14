@@ -101,3 +101,19 @@ def send_transaction_data(seed):
         }
         transaction_list.append(send_data)
     return transaction_list
+
+def get_balance(seed):
+    client = xrpl.clients.JsonRpcClient(testnet_url)
+
+    account = xrpl.wallet.Wallet.from_seed(seed)
+    balance = xrpl.account.get_balance(account.address, client)
+
+    #account_info = xrpl.account.get_account_info(address, client)
+
+    # Convert the balance from drops to XRP (1 XRP = 1,000,000 drops)
+    balance = float(balance) / 1_000_000
+    
+    return balance
+
+account = create_account()
+print(get_balance(account.seed))
