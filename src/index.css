@@ -89,10 +89,10 @@ body{
 #koalaText {
   font-size: 8rem;
   color: #442519;
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Lucida Console";
   position: absolute;
   left: 25vw;
-  top: -12vh;
+  top: -4vh;
   animation: fadeIn 1.5s ease forwards;
 }
 
@@ -112,7 +112,7 @@ body{
   right: 4vw;
   top: 5vh;
   font-size: 2rem;
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Lucida Console";
   width: 8.75vw;
   border-bottom: 2px solid black; /* Outer border */
   animation: fadeIn 1.5s ease forwards;
@@ -186,6 +186,7 @@ body{
 
 #loginHeader{
   font-size: 2.5rem;
+  font-family: "Lucida Console";
   margin-top: 10vh;
   color: #442519;
   text-align: center;
@@ -227,9 +228,9 @@ body{
   height: 3rem;
   position: relative;
   top: 10vh;
-  margin-left: 13vw;
+  margin-left: 14vw;
   text-align: center;
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Lucida Console";
   border: none;
   border-radius: .25rem;
   color: #27375c;
@@ -257,7 +258,7 @@ body{
   position: absolute;
   top: 40vh;
   height: 1.5rem;
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Lucida Console";
   border-radius: .25rem;
   border: outset 2px #949393;
 }
@@ -272,7 +273,7 @@ body{
   top: 15vh;
   left: 5vw;
   position: relative;
-  font-family: "Comic Sans MS", cursive;
+  font-family: v
 }
 
 #centerOr{
@@ -281,8 +282,9 @@ body{
 }
 #optionOr{
   font-size: 3rem;
-  margin-top: 20vh;
-  color: #442519
+  margin-top: 23vh;
+  color: #442519;
+  font-family: "Lucida Console";
 }
 #newSeedContainer{
   position: relative;
@@ -291,9 +293,8 @@ body{
 }
 #newSeed{
   position: absolute;
-  top: 2vh;
   border-radius: .25rem;
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Lucida Console";
   border: 2px outset #949393; /* Set initial border */
   height: 2rem;
 }
@@ -306,7 +307,7 @@ body{
   top: 5vh;
   left: 2vw;
   position: relative;
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Lucida Console";
 }
 /* Styling for Main */
 
@@ -316,7 +317,7 @@ body{
   width: 100%; /* Ensure the container fills its parent */
   max-width: 1200px; /* Maximum width of the white box, adjust as needed */
   height: 100%; /* Adjust as necessary */
-  background-color: #fff; /* Assuming the white box has a white background */
+  background-color: #b99e89; /* Assuming the white box has a white background */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow for depth */
   padding: 20px;
   box-sizing: border-box; /* Include padding in the width */
@@ -335,36 +336,128 @@ body{
 
 #leftColumn {
   flex: 0 0 15%; /* Do not grow or shrink, set basis to 15% */
+  margin-top: 25vh;
 }
 
+#headerContacts{
+  color:#392113;
+  margin-left: 5vw;
+}
+
+#listContacts{
+  margin-left: 2vw;
+  text-align: center;
+}
 #centerColumn {
-  flex: 0 0 70%; /* Do not grow or shrink, set basis to 70% */
+  flex: 0 0 65%; /* Do not grow or shrink, set basis to 70% */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
-
-#centerTopContainer {
-  border-bottom: 1px solid black;
-  padding-bottom: 20px;
+#buttonOne{
+  border: outset 3px #724330;
+  background-color: #ccc;
+  border-radius: .5rem;
+  color: #392113;
+  position: relative;
+  margin-right: 2vw;
+  height: 2rem;
+  width: 8rem;
+  top: -3vh;
+  left: 10vw;
+}
+#buttonOne:hover{
+  border: inset 3.5px #724330;
+  width: 8.2rem;
+  height: 2.2rem;
+  top: -2.8vh;
+  left: 9.8vw;
+}
+#buttonTwo{
+  border: outset 3px #724330;
+  background-color: #ccc;
+  color: #392113;
+  border-radius: .5rem;
+  position: relative;
+  margin-right: 2vw;
+  height: 2rem;
+  width: 8rem;
+  top: -3vh;
+  left: 12vw;
+}
+#buttonTwo:hover{
+  border: inset 3.5px #724330;
+  width: 8.2rem;
+  height: 2.2rem;
+  top: -2.8vh;
+  left: 11.8vw;
+}
+#buttonThree{
+  border: outset 3px #724330;
+  background-color: #ccc;
+  color: #392113;
+  border-radius: .5rem;
+  position: relative;
+  height: 2rem;
+  width: 8rem;
+  top: -3vh;
+  left: 14vw;
+}
+#buttonThree:hover{
+  border: inset 3.5px #724330;
+  width: 8.2rem;
+  height: 2.2rem;
+  top: -2.8vh;
+  left: 13.8vw;
 }
 
-#centerBottomContainer {
-  flex: 1;
-  padding-top: 20px;
+.loading-wheel {
+  position: relative;
+  left: 45vw;
+  bottom: 4vh;
+  width: 10px;
+  height: 10px;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  border-top-color: #333;
+  animation: spin 1s linear infinite;
 }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 
 #koalaGraph img {
-  max-width: 100%;  /* Ensures the image is no wider than its container */
-  height: auto;     /* Maintains the aspect ratio of the image */
+  position: absolute;
+  top: 62vh;
+  margin-left: 5vw;
+  height: 50%;     /* Maintains the aspect ratio of the image */
   display: block;   /* Removes additional space below the image */
 }
 
 #rightColumn {
-  flex: 0 0 15%; /* Do not grow or shrink, set basis to 15% */
+  flex: 0 0 20%; /* Do not grow or shrink, set basis to 15% */
+  margin-top: 24.5vh;
+  overflow-x: hidden;
+  text-align: center;
+  
 }
 
+#headerTransaction{
+  left: 1vw;
+  margin-right: 3vw;
+  color: #392113;
+}
+
+.itemTransaction {
+  position: absolute;
+  margin-right: 12vw;
+  width: 8rem;
+  word-wrap: break-word; /* Add this line to enable word wrapping */
+
+}
 .header {
   font-size: 1.5em;
   margin-bottom: 10px;
@@ -374,13 +467,16 @@ body{
   list-style-type: none;
   padding: 0;
   width: 100%;
+
+  color: #392113;
 }
 
 .listItem {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #392113;
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
+
 
 .button {
   align-items: center;
@@ -396,9 +492,20 @@ body{
   left: 32vh;
 }
 .balance {
-  align-self: center;
-  font-size: 4em;
-  margin-bottom: 20px;
+  position: relative;
+  font-size: 3rem;
+  top: 3vh;
+  margin: 0;
+  color: #442519;
+  font-family: "Lucida Console";
+}
+#unitToken{
+  position: relative;
+  font-size: 2.5rem;
+  left: 40vw;
+  bottom: 6vh;
+  color: #442519;
+  font-family: "Lucida Console";
 }
 
 .graphPlaceholder {
@@ -425,7 +532,7 @@ body{
 }
 
 .modal-content {
-  background-color: #9c8878;
+  background-color: #cbb4a1;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #392113;
@@ -441,21 +548,21 @@ body{
   margin-right: 2vw;
 }
 #recipientPublicKey{
-  border: outset #494449 2px;
+  border: outset #7e7065 2px;
   border-radius: .25rem;
   background-color: #9a948f;
 }
 #recipientPublicKey:hover{
- background-color: #75716d;
+ background-color: #c8bfb6;
 }
 
 #amountToSend{
-  border: outset #494449 2px;
+  border: outset #7e7065 2px;
   border-radius: .25rem;
   background-color: #9a948f;
 }
 #amountToSend:hover{
- background-color: #75716d;
+ background-color: #c8bfb6;
 }
 
 #amountToSend::-webkit-inner-spin-button,
@@ -626,13 +733,13 @@ body{
   opacity: 0;
   animation: fadeIn 3s ease forwards; /* Apply fadeIn animation */
   animation-delay: 2s;
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Lucida Console";
   z-index: 4;
   width: 80%;
 }
 
 #socials{
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Lucida Console";
   color: #3f9736;
   animation: fadeIn 3s ease forwards; /* Apply fadeIn animation */
   animation-delay: 2s;
