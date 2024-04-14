@@ -8,15 +8,14 @@ function Main({userSeed}) {
   const [balance, setBalance] = useState('');
 
   // Function to fetch the balance from the backend
-const getBalance = async () => {
-  try {
-    // Use the userSeed in your API call
-    const response = await axios.post(`${serverUrl}/account_balance`, { seed: userSeed });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+  const getBalance = async () => {
+    try {
+      const response = await axios.post(`${serverUrl}/account_balance`, { seed: userSeed });
+      if (!response.data) {
+        throw new Error(`Response data not found`);
       }
-      const balance = await response.json();
-      setBalance(balance); // Assume the response has a balance field
+      const balance = response.data; // Accessing the data property directly
+      setBalance(balance);
     } catch (error) {
       console.error("Failed to fetch balance:", error);
       // Handle the error according to your app's requirements

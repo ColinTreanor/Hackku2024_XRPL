@@ -59,8 +59,8 @@ function Login({ onPageChange, onSetUserSeed }) {
       //const response = await axios.post(`api/${serverUrl}/login`, { seed: userInput, value: 'newseed' });
       const response = await axios.post(`${serverUrl}/login`, { seed: userInput});
       console.log("Wallet created:", response.data);
-
-      onSetUserSeed(response.data.seed); // Update user seed state
+      console.log(userInput);
+      onSetUserSeed(userInput); // Update user seed state
   onPageChange('Main');
 
     } catch (error) {
