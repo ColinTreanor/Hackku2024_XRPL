@@ -39,7 +39,7 @@ function App() {
       <div id="koalaTitle">
         <img src={KoalaArms} alt="Koala Arms" id="koalaArms"/>
         <img src={KoalaBody} alt="Koala Body" id="koalaBody"/>
-        <p id="koalaText">Koala Wallet</p>
+        <p id="koalaText">Koala Pouch</p>
         {currentPage !== 'Login' && (
           <>
             <button id="settingsButton" onClick={toggleSettings}>
@@ -49,9 +49,6 @@ function App() {
             <p id="borderDouble"></p>
 
           </>
-        )}
-        {currentPage !== 'Login' && (
-          <div id="clickMeLabel">Click me</div>
         )}
         <div id="headBorder"></div>
       </div>
