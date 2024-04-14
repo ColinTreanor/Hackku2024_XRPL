@@ -297,15 +297,18 @@ body{
   font-family: "Lucida Console";
   border: 2px outset #949393; /* Set initial border */
   height: 2rem;
+  top: 2vh;
+
 }
 
 #newSeed:hover {
   border: 3px inset #949393;
 }
 
+
 #loadingCreate {
   top: 5vh;
-  left: 2vw;
+  left: 3vw;
   position: relative;
   font-family: "Lucida Console";
 }
