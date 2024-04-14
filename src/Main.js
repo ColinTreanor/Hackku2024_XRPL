@@ -47,6 +47,7 @@ function Main({userSeed, public_key}) {
   function refresh_balance() {
     getBalance();
     getBalanceOther();
+
     console.log("Balance Updated");
   };
 
