@@ -70,9 +70,8 @@ def account_info():
 @app.route('/account_balance', methods=['POST'])
 def account_balance():
     data = request.json
-    seed = data.get('seed')
-    public_key = wallet.get_public_key_from_seed(seed)
-    if seed:
+    public_key = data.get('pub_key')
+    if public_key:
         account_balance = wallet.get_balance(public_key)
         return jsonify(account_balance)
     else:
