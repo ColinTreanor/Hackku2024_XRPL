@@ -102,11 +102,10 @@ def send_transaction_data(seed):
         transaction_list.append(send_data)
     return transaction_list
 
-def get_balance(seed):
+def get_balance(public_key):
     client = xrpl.clients.JsonRpcClient(testnet_url)
-
-    account = xrpl.wallet.Wallet.from_seed(seed)
-    balance = xrpl.account.get_balance(account.address, client)
+    address = get_address_from_public_key(public_key)
+    balance = xrpl.account.get_balance(address, client)
 
     #account_info = xrpl.account.get_account_info(address, client)
 

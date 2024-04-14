@@ -71,8 +71,9 @@ def account_info():
 def account_balance():
     data = request.json
     seed = data.get('seed')
+    public_key = wallet.get_public_key_from_seed(seed)
     if seed:
-        account_balance = wallet.get_balance(seed)
+        account_balance = wallet.get_balance(public_key)
         return jsonify(account_balance)
     else:
         return jsonify({'error': 'Missing seed parameter'}), 400
