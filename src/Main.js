@@ -19,6 +19,8 @@ function Main({userSeed, public_key}) {
   const [transactionInfo, setTransactionInfo] = useState({});
   const [isRefreshing, setIsRefreshing] = useState(false);
 
+  const [loadSend, setLoadSend] = useState(false);
+
   const simulateRefresh = () => {
     setIsRefreshing(true);
 
@@ -113,10 +115,12 @@ function Main({userSeed, public_key}) {
   const handleSendSubmit = async () => {
     // Here you would send the data to the backend
     // For now, we'll just log it to the console and close the modal
+    setLoadSend(true);
     console.log('Sending', amountToSend,'\nto', recipientPublicKey);
     await send_xrp();
     // Close the modal
     setShowSendModal(false);
+    setLoadSend(false);
     refresh_balance();
   };
 
@@ -168,11 +172,9 @@ function Main({userSeed, public_key}) {
         <h2 className="header">Last Transaction</h2>
         <ul className="list">
         {Object.entries(transactionInfo).map(([key, value]) => (
-        key === "Amount" ?
-        <li key={key}>{`${value > 0 ? "+" : "-"}${Math.abs(value) / 1000000} \n\nRecipient: ${transactionInfo.Other}`}</li>
-        :
-        null
-        ))}
+        key === "Amount" ? <li key={key}> 
+        {`${transactionInfo.isSentTransaction ? "-" : "+"}${Math.abs(value) / 1000000} Recipient: ${transactionInfo.Other}`}
+        </li> : null))}
         </ul>
       </div>
       
@@ -182,21 +184,24 @@ function Main({userSeed, public_key}) {
           <div className="modal-content">
             <span className="close" onClick={handleCloseModal}>&times;</span>
             <h2>Send Funds</h2>
-            <label htmlFor="recipientPublicKey">Recipient Public Key:</label>
+            <label id="labelRecipient" htmlFor="recipientPublicKey">Recipient Public Key:</label>
             <input
               type="text"
               id="recipientPublicKey"
               value={recipientPublicKey}
               onChange={e => setRecipientPublicKey(e.target.value)}
             />
-            <label htmlFor="amountToSend">Amount to Send:</label>
+            <label id="labelAmount" htmlFor="amountToSend"><br/>Amount to Send:</label>
             <input
               type="number"
               id="amountToSend"
               value={amountToSend}
               onChange={e => setAmountToSend(e.target.value)}
             />
-            <button className="button" onClick={handleSendSubmit}>Submit</button>
+            <button id="buttonSendTransaction" onClick={handleSendSubmit}>Submit</button>
+            {loadSend && (
+              <p id="loadingSend">Loading...</p>
+            )}
           </div>
         </div>
       )}
