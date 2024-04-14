@@ -115,5 +115,5 @@ def get_balance(seed):
     
     return balance
 
-account = create_account()
-print(get_balance(account.seed))
+#account = get_public_key_from_seed("sEdVLQ9axjHthHAzBrnLqeTRPvxg3q7")
+#print(account)

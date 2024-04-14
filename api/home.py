@@ -81,7 +81,7 @@ def add_name(name, public_key):
     names_queue[name] = public_key
     save_names(names_queue)
     
-@app.route('/send_transaction_info', methods=['POST'])
+@app.route('/send_transaction_info', methods=['GET'])
 def send_transaction_info():
     data = request.json
     seed = data.get('seed')
