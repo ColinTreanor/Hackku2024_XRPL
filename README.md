@@ -16,7 +16,7 @@ The Koala Walla is a carefully designed and developed MVP from a 36-hour hackath
 
 ### Learning Outcomes
 
-- **Front-End Team: Nicholas Holmes & Kyle Spragg** - Becae familiar with React's ecosystem and learned about integrating blockchain transactions into a seamless user experience.
+- **Front-End Team: Nicholas Holmes & Kyle Spragg** - Became familiar with React's ecosystem and learned about integrating blockchain transactions into a seamless user experience.
 - **Back-End Team: Alex Doehring & Colin Traenor** - Explored XRPL's documentation and functionality, and how Flask can be utilized to build a performant back end for financial applications.
 
 ## Code Organization
@@ -67,6 +67,7 @@ By integrating Flask into our tech stack, we ensured that Koala Walla's back-end
 - [Figma Designs](https://www.figma.com)
 - [XRPL Transaction Methods](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html)
 - [Python Official Website](https://www.python.org/downloads/)
+- [KoalaWalla Devpost](https://devpost.com/software/koala-walla)
 
 ## Hackathon Strategy
 Our agile-like approach with continuous integration and testing helped us create a solid MVP in record time. Frequent commits and intense collaboration are the hallmarks of this project's fast-paced development.
@@ -112,7 +113,7 @@ flask run
 - Send and receive XRP with ease
 - Koala-themed UI for a friendly and unique user experience -- custom widgets designed in Figma
 
-## Authors
+## Authors - All Computer Science Majors at KU
 - **Alex Doehring** - Back-End Wizardry: Lead development of back end functions and Python code, and figureheaded the programming for transaction history.
 - **Nicholas Holmes** - Front-End Artisan: Oversaw UI design, creating objects in Figma and porting them in a way that allowed functionality, as well as working with JavaScript and CSS files.
 - **Kyle Spragg** - Front-End Maestro: Programmed majority of UI animations in CSS and assisted in front and back end integration within JavaScript files.
