@@ -62,7 +62,7 @@ def account_info():
     data = request.json
     seed = data.get('seed')
     if seed:
-        account_info = wallet.get_info(seed)
+        account_info = wallet.get_account(seed)
         return jsonify(account_info)
     else:
         return jsonify({'error': 'Missing seed parameter'}), 400
