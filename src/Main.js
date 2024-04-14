@@ -16,7 +16,7 @@ function Main({userSeed, public_key}) {
   // States for the form inside the modal
   const [recipientPublicKey, setRecipientPublicKey] = useState('');
   const [amountToSend, setAmountToSend] = useState('');
-  const [transactionHistoryList, setTransactionHistory] = useState('');
+  const [transactionInfo, setTransactionInfo] = useState({});
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const simulateRefresh = () => {
@@ -76,6 +76,7 @@ function Main({userSeed, public_key}) {
     getBalance();
     //getBalanceOther();
     simulateRefresh();
+    getTransaction();
     console.log("Balance Updated");
   };
 
@@ -95,7 +96,7 @@ function Main({userSeed, public_key}) {
   useEffect(() => {
     // Fetch balance using userSeed here
     getBalance();
-    getTransactionHistory();
+    getTransaction();
   }, [userSeed]); // Depend on userSeed so this runs when it changes
 
    // Function to handle the send button click
