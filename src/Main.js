@@ -57,7 +57,7 @@ function Main({userSeed, public_key}) {
 
   function refresh_balance() {
     getBalance();
-    getBalanceOther();
+    //getBalanceOther();
     simulateRefresh();
     console.log("Balance Updated");
   };
@@ -92,7 +92,7 @@ function Main({userSeed, public_key}) {
   useEffect(() => {
     // Fetch balance using userSeed here
     getBalance();
-    getTransactionHistory();
+    // getTransactionHistory();
   }, [userSeed]); // Depend on userSeed so this runs when it changes
 
    // Function to handle the send button click
