@@ -44,6 +44,20 @@ function Main({userSeed, public_key}) {
     }
   };
 
+  const getTransaction = async () => {
+    try {
+      const response = await axios.post(`${serverUrl}/send_transaction_info`, { seed: userSeed });
+      if (!response.data) {
+        throw new Error(`Response data not found`);
+      }
+      const transactionInfo = response.data; // Accessing the data property directly
+      setTransactionInfo(transactionInfo); 
+    } catch (error) {
+      console.error("Failed to fetch balance:", error);
+      // Handle the error according to your app's requirements
+    }
+  };
+
   const getBalanceOther = async () => {
     try {
       const response = await axios.post(`${serverUrl}/account_balance`, { pub_key: recipientPublicKey });
@@ -65,20 +79,6 @@ function Main({userSeed, public_key}) {
     console.log("Balance Updated");
   };
 
-  // const getTransactionHistory = async () => {
-  //   try {
-  //     const response = await axios.post(`${serverUrl}/send_transaction_info`, { seed: userSeed });
-  //     if (!response.data) {
-  //       throw new Error(`Response data not found`);
-  //     }
-  //     const transactionHistoryList = response.data; // Accessing the data property directly
-  //     setTransactionHistory(transactionHistoryList);
-  //   } catch (error) {
-  //     console.error("Failed to fetch balance:", error);
-  //     // Handle the error according to your app's requirements
-  //   }
-  // };
-
   const send_xrp = async () => {
     try {
       const response = await axios.post(`${serverUrl}/send_xrp`, { seed: userSeed, amount: amountToSend, recipient: recipientPublicKey });
@@ -95,7 +95,7 @@ function Main({userSeed, public_key}) {
   useEffect(() => {
     // Fetch balance using userSeed here
     getBalance();
-    // getTransactionHistory();
+    getTransactionHistory();
   }, [userSeed]); // Depend on userSeed so this runs when it changes
 
    // Function to handle the send button click
@@ -164,9 +164,14 @@ function Main({userSeed, public_key}) {
 
       {/* Third Column */}
       <div id="rightColumn" className="column">
-        <h2 className="header">Transaction History</h2>
+        <h2 className="header">Last Transaction</h2>
         <ul className="list">
-          ${transactionHistoryList}
+        {Object.entries(transactionInfo).map(([key, value]) => (
+        key === "Amount" ?
+        <li key={key}>{`${value > 0 ? "+" : "-"}${Math.abs(value) / 1000000} \n\nRecipient: ${transactionInfo.Other}`}</li>
+        :
+        null
+        ))}
         </ul>
       </div>
       
