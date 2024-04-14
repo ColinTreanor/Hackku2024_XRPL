@@ -65,23 +65,23 @@ def parse_transaction_data(transaction_obj):
     transaction = transaction_obj.result["transactions"][0] #Goes through Response object and pulls Transaction data
     tx = transaction["tx"] #Finds specific last transaction data under "tx"
     transaction_data = { #stores the data in a dictionary
-        "Sender" : get_public_key_from_seed(tx["Account"]), #gets public key
+        "Sender" : tx["Account"], #gets public key
         "Amount" : tx["Amount"],
-        "Receiver" : get_public_key_from_seed(tx["Destination"]), #gets public key
+        "Receiver" : tx["Destination"], #gets public key
         "Hash" : tx["hash"]
     }
     return transaction_data
 
-# def send_transaction_data(seed):
-#     user_key = get_public_key_from_seed(seed)
-#     is_sent = transaction["Sender"] == user_key
-#     send_data = {
-#         "Other" : transaction["Receiver"] if transaction["Sender"] == user_key else transaction["Sender"],
-#         "Amount" : transaction["Amount"],
-#         "isSentTransaction" : is_sent
-#     }
-#     transaction_list.append(send_data)
-#     return transaction_list
+def send_transaction_data(seed):
+    last_tx = last_transaction(seed)
+    is_sent = last_tx["Sender"] == seed
+    send_data = {
+        "Other" : last_tx["Receiver"] if last_tx["Sender"] == seed else last_tx["Sender"],
+        "Amount" : last_tx["Amount"],
+        "isSentTransaction" : is_sent
+    }
+    return send_data
+
 
 def get_balance(public_key):
     client = xrpl.clients.JsonRpcClient(testnet_url)

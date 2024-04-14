@@ -86,12 +86,8 @@ def send_transaction_info():
     data = request.json
     seed = data.get('seed')
     if seed:
-        transaction_list = wallet.send_transaction_data(seed)
-        print(transaction_list)
-        if transaction_list:
-            return jsonify(transaction_list)
-        else:
-            return jsonify([])
+        last_tx = wallet.send_transaction_data(seed)
+        return jsonify(last_tx)
     else:
         return jsonify({'error' : 'Missing seed parameter'}), 400
 
