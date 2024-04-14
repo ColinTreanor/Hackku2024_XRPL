@@ -66,6 +66,7 @@ body{
   padding: 0;
   right: 12vw;
   top: 15.5vh;
+  animation: fadeIn 1.5s ease forwards;
 }    
 #buttonPng{
   position: absolute;
@@ -112,6 +113,7 @@ body{
   font-family: "Comic Sans MS", cursive;
   width: 8.75vw;
   border-bottom: 2px solid black; /* Outer border */
+  animation: fadeIn 1.5s ease forwards;
 }
 #borderDouble{
   position: absolute;
@@ -119,6 +121,7 @@ body{
   top: 13.25vh;
   width: 8.75vw;
   border-bottom: 2px solid black; /* Outer border */
+  animation: fadeIn 1.5s ease forwards;
 }
 #clickMeLabel{
   position: absolute;
@@ -129,6 +132,7 @@ body{
   width: 2vw;
   text-align: center;
   z-index: 7;
+  animation: fadeIn 1.5s ease forwards;
 }
 .sideborders-container {
   margin-top: -1vh;
