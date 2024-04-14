@@ -320,6 +320,7 @@ body{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow for depth */
   padding: 20px;
   box-sizing: border-box; /* Include padding in the width */
+  overflow-x: hidden;
 }
 
 #mainColumn {
@@ -352,6 +353,12 @@ body{
 #centerBottomContainer {
   flex: 1;
   padding-top: 20px;
+}
+
+#koalaGraph img {
+  max-width: 100%;  /* Ensures the image is no wider than its container */
+  height: auto;     /* Maintains the aspect ratio of the image */
+  display: block;   /* Removes additional space below the image */
 }
 
 #rightColumn {

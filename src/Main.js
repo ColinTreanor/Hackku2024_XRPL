@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './index.css';
+import KoalaGraph from './Design/XRP_Koala_Graph.png';
+
 const serverUrl = 'http://127.0.0.1:5000'; // Update with your server URL
+
 
 function Main({userSeed, public_key}) {
   // State to store the balance
@@ -62,19 +65,19 @@ function Main({userSeed, public_key}) {
     console.log("Balance Updated");
   };
 
-  const getTransactionHistory = async () => {
-    try {
-      const response = await axios.post(`${serverUrl}/send_transaction_info`, { seed: userSeed });
-      if (!response.data) {
-        throw new Error(`Response data not found`);
-      }
-      const transactionHistoryList = response.data; // Accessing the data property directly
-      setTransactionHistory(transactionHistoryList);
-    } catch (error) {
-      console.error("Failed to fetch balance:", error);
-      // Handle the error according to your app's requirements
-    }
-  };
+  // const getTransactionHistory = async () => {
+  //   try {
+  //     const response = await axios.post(`${serverUrl}/send_transaction_info`, { seed: userSeed });
+  //     if (!response.data) {
+  //       throw new Error(`Response data not found`);
+  //     }
+  //     const transactionHistoryList = response.data; // Accessing the data property directly
+  //     setTransactionHistory(transactionHistoryList);
+  //   } catch (error) {
+  //     console.error("Failed to fetch balance:", error);
+  //     // Handle the error according to your app's requirements
+  //   }
+  // };
 
   const send_xrp = async () => {
     try {
@@ -153,8 +156,8 @@ function Main({userSeed, public_key}) {
           <button className="button" onClick={refresh_balance}>Refresh Balance</button>
         </div>
         <div className="centerBottomContainer">
-          <div className="graphPlaceholder">
-            XRP Value Graph Placeholder
+          <div id="koalaGraph">
+            <img src={KoalaGraph} alt="Koala Graph" id="koalaGraph"/>
           </div>
         </div>
       </div>
