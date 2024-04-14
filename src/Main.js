@@ -13,6 +13,16 @@ function Main({userSeed, public_key}) {
   const [recipientPublicKey, setRecipientPublicKey] = useState('');
   const [amountToSend, setAmountToSend] = useState('');
   const [transactionHistoryList, setTransactionHistory] = useState('');
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const simulateRefresh = () => {
+    setIsRefreshing(true);
+
+    // Delay the state change to false to simulate a refresh
+    setTimeout(() => {
+      setIsRefreshing(false);
+    }, 1000); // Change this value to adjust the delay time
+  };
 
 
   // Function to fetch the balance from the backend
@@ -47,7 +57,7 @@ function Main({userSeed, public_key}) {
   function refresh_balance() {
     getBalance();
     getBalanceOther();
-
+    simulateRefresh();
     console.log("Balance Updated");
   };
 
