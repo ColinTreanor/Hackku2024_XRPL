@@ -297,3 +297,91 @@ body{
 #newSeed:hover {
   border: 3px inset #949393;
 }
+
+/* Styling for Main */
+
+#mainContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Ensure the container fills its parent */
+  max-width: 1200px; /* Maximum width of the white box, adjust as needed */
+  height: 100%; /* Adjust as necessary */
+  background-color: #fff; /* Assuming the white box has a white background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow for depth */
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in the width */
+}
+
+#mainColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.05); /* Light transparent background to visualize the column */
+  margin: 10px; /* Space between columns */
+}
+
+#leftColumn {
+  flex: 0 0 15%; /* Do not grow or shrink, set basis to 15% */
+}
+
+#centerColumn {
+  flex: 0 0 70%; /* Do not grow or shrink, set basis to 70% */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#centerTopContainer {
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+}
+
+#centerBottomContainer {
+  flex: 1;
+  padding-top: 20px;
+}
+
+#rightColumn {
+  flex: 0 0 15%; /* Do not grow or shrink, set basis to 15% */
+}
+
+.header {
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.listItem {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.button {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.balance {
+  margin-bottom: 20px;
+}
+
+.graphPlaceholder {
+  width: 100%;
+  height: 150px; /* Set a fixed height for the placeholder */
+  background-color: #ccc; /* Placeholder color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  color: #666;
+  margin-top: 20px;
+}
