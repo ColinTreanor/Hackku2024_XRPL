@@ -41,6 +41,14 @@ def get_account(seed):
     wallet = xrpl.wallet.Wallet.from_seed(seed)
     return wallet
 
+def get_info(seed):
+    info = {
+        "public_key" : get_public_key_from_seed(seed),
+        "address" : get_account(seed).address,
+        "seed" : seed
+    }
+    return info
+
 def get_address_from_public_key(public_key):
     return xrpl.core.keypairs.derive_classic_address(public_key)
 
@@ -103,5 +111,5 @@ def get_balance(public_key):
     
     return balance
 
-#account = get_public_key_from_seed("sEdVLQ9axjHthHAzBrnLqeTRPvxg3q7")
-#print(account)
+account = print(get_account("sEdVLQ9axjHthHAzBrnLqeTRPvxg3q7"))
+
