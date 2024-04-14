@@ -22,7 +22,7 @@ body{
   left: 9.25vw;
   top: 27vh;
   position: absolute;
-  z-index: 10;
+  z-index: 9;
 
 }
 #koalaBody{
@@ -390,6 +390,11 @@ body{
   cursor: pointer;
 }
 
+#loadingSend{
+  position: relative;
+  bottom: 6vh;
+  left: 32vh;
+}
 .balance {
   align-self: center;
   font-size: 4em;
@@ -410,7 +415,7 @@ body{
 
 .modal {
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   left: 0;
   top: 0;
   width: 100%;
@@ -420,13 +425,60 @@ body{
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #9c8878;
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #392113;
   width: 80%;
+  height: 20%;
   max-width: 500px; /* Could be any width */
+  color: #3b2d25;
 }
+#labelRecipient {
+  margin-right: 2vw;
+}
+#labelAmount{
+  margin-right: 2vw;
+}
+#recipientPublicKey{
+  border: outset #494449 2px;
+  border-radius: .25rem;
+  background-color: #9a948f;
+}
+#recipientPublicKey:hover{
+ background-color: #75716d;
+}
+
+#amountToSend{
+  border: outset #494449 2px;
+  border-radius: .25rem;
+  background-color: #9a948f;
+}
+#amountToSend:hover{
+ background-color: #75716d;
+}
+
+#amountToSend::-webkit-inner-spin-button,
+#amountToSend::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#buttonSendTransaction {
+  border-radius: .25rem;
+  border: outset 2px white;
+  align-items: center;
+  margin-top: 5vh;
+  margin-left: 2vw;
+  cursor: pointer;
+  background-color: #9a948f;
+}
+#buttonSendTransaction:hover{
+  background-color: #75716d;
+  border: inset 2px white;
+}
+
+
 
 .close {
   color: #aaa;
