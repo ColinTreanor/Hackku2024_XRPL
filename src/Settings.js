@@ -1,7 +1,10 @@
 // Settings.js
-import React from 'react';
+import { useState} from 'react';
 
 function Settings() {
+  const [privateKey, setPrivateKey] = useState('');
+  const [publicKey, setPublicKey] = useState('');
+  const [seedKey, setSeedKey] = useState('');
   return (
     <div id="mainAccount">
       <h1 id="mainAccountInfo">Account Information</h1>
