@@ -5,7 +5,7 @@ const serverUrl = 'http://127.0.0.1:5000'; // Update with your server URL
 
 function Main({userSeed}) {
   // State to store the balance
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState('');
 
   // Function to fetch the balance from the backend
   const getBalance = async () => {
@@ -13,17 +13,9 @@ function Main({userSeed}) {
       const response = await axios.post(`${serverUrl}/account_balance`, { seed: userSeed });
       if (!response.data) {
         throw new Error(`Response data not found`);
-const fetchBalance = async () => {
-  try {
-    // Use the userSeed in your API call
-    const response = await axios.post(`${serverUrl}/balance`, { seed: userSeed });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
       }
       const balance = response.data; // Accessing the data property directly
       setBalance(balance);
-      const data = await response.json();
-      setBalance(data.balance); // Assume the response has a balance field
     } catch (error) {
       console.error("Failed to fetch balance:", error);
       // Handle the error according to your app's requirements
@@ -32,6 +24,7 @@ const fetchBalance = async () => {
 
   useEffect(() => {
     // Fetch balance using userSeed here
+    getBalance();
   }, [userSeed]); // Depend on userSeed so this runs when it changes
 
 
@@ -55,7 +48,7 @@ const fetchBalance = async () => {
       {/* Second Column */}
       <div id="centerColumn" className="column">
         <div className="centerTopContainer">
-          <h1 className="balance">Balance: ${balance.toFixed(2)}</h1>
+          <h1 className="balance">Balance: ${balance}</h1>
           <button className="button" onClick={() => {}}>Send</button>
           <button className="button" onClick={() => {}}>Sell</button>
         </div>
