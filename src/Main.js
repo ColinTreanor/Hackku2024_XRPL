@@ -128,6 +128,7 @@ function Main({userSeed, public_key}) {
           <h1 className="balance">Balance: {balance}XRP</h1>
           <button className="button" onClick={handleSendClick}>Send</button>
           <button className="button" onClick={() => {}}>Sell</button>
+          <button className="button" onClick={refresh_balance}>Refresh Balance</button>
         </div>
         <div className="centerBottomContainer">
           <div className="graphPlaceholder">
