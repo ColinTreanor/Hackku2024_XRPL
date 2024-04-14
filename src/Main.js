@@ -62,7 +62,7 @@ function Main({userSeed}) {
   const handleSendSubmit = async () => {
     // Here you would send the data to the backend
     // For now, we'll just log it to the console and close the modal
-    console.log('Sending', amountToSend, 'to', recipientPublicKey);
+    console.log('Sending', amountToSend,'\nto', recipientPublicKey);
     // Close the modal
     setShowSendModal(false);
   };
@@ -88,7 +88,7 @@ function Main({userSeed}) {
       <div id="centerColumn" className="column">
         <div className="centerTopContainer">
           <h1 className="balance">Balance: ${balance}</h1>
-          <button className="button" onClick={() => {}}>Send</button>
+          <button className="button" onClick={handleSendClick}>Send</button>
           <button className="button" onClick={() => {}}>Sell</button>
         </div>
         <div className="centerBottomContainer">
