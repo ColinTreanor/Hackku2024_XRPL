@@ -1,6 +1,6 @@
 # Koala Pouch: An XRPL Digital Wallet
 
-![Koala Wallet Logo](src/Design/Koala_Body.png)  Howdy Mate!
+![Koala Pouch Logo](src/Design/Koala_Body.png)  Howdy Mate!
 
 Welcome to the Koala Pouch GitHub repository! This repository contains the source code for a digital wallet tailored for the XRP Ledger (XRPL), designed to provide a seamless experience for managing your XRP assets, user's favorite way of handling their marsupial money!
 
@@ -25,6 +25,21 @@ Our repository is structured with clear dependency management and logical sectio
 
 ### Front-End Structure
 
+Figma: Crafting a Koala-fied User Interface
+For the design phase of Koala Pouch's front end, Figma stood out as our go-to tool. Its ease of use and advanced capabilities for creating multi-layered design workspaces enabled us to bring the charm of our koala-themed UI to life. 
+
+Figma's intuitive user interface was a major advantage for our team. Its straightforward layout allowed us to jump right into the design process without a steep learning curve, which is essential during the crunch time of a hackathon.
+
+The ability to work with a multi-layered workspace in Figma was pivotal for designing complex UI elements. We could create intricate designs with overlapping components and adjust them individually or as a group, enhancing the visual depth and functionality of our application. It's vector-based approach allowed us to design sharp, scalable graphics that looked great on any device. Moreover, its prototyping features enabled us to simulate user interactions and transitions, providing us with an interactive preview of our UI's look and feel.
+
+Here's an example of a complex design we were able to create thanks to Figma:
+![Koala Graph](src/Design/XRP_Koala_Graph.png)
+
+Figma made it easy to share assets among team members, ensuring consistency across our design. Components and design tokens could be reused, which maintained a uniform aesthetic throughout Koala Pouch's interface. 
+
+The efficiency and flexibility Figma provided significantly contributed to the delightful design experience that Koala Pouch offers.
+
+NPM:
 NPM provided us with a straightforward approach to manage the numerous packages our project depends upon. It allowed us to:
 
 - Install packages like `create-react-app`, `redux`, `react-redux`, `axios`, `bootstrap`, `@mui/material`, `@emotion/react`, and `@emotion/styled` with a simple command.
@@ -39,6 +54,7 @@ While there are alternatives like Yarn, we found NPM's recent improvements in sp
 
 ### Back-End Structure
 
+Flask:
 Flask is a micro-framework, which means it is minimalistic by design, without sacrificing the power and flexibility needed for complex applications. This simplicity allowed us to create a lightweight and maintainable back-end service, which was crucial for the rapid development pace of a hackathon project.
 
 Our team's proficiency in Python played a significant role in choosing Flask. Since Python is known for its readable syntax and extensive libraries, Flask allowed us to leverage these benefits, making our development process smoother and more efficient. Additionally, Flask's compatibility with various deployment options gave us the flexibility to consider multiple hosting services for future deployment. 
@@ -56,7 +72,7 @@ By integrating Flask into our tech stack, we ensured that Koala Pouch's back-end
 Our agile-like approach with continuous integration and testing helped us create a solid MVP in record time. Frequent commits and intense collaboration are the hallmarks of this project's fast-paced development.
 
 ## Getting Started
-Before you dive into the Koala Wallet, make sure you've got all the prerequisites installed.
+Before you dive into the Koala Pouch, make sure you've got all the prerequisites installed.
 
 ### Front-End Dependencies
 ```bash
