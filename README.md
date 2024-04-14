@@ -32,6 +32,9 @@ Figma's intuitive user interface was a major advantage for our team. Its straigh
 
 The ability to work with a multi-layered workspace in Figma was pivotal for designing complex UI elements. We could create intricate designs with overlapping components and adjust them individually or as a group, enhancing the visual depth and functionality of our application. It's vector-based approach allowed us to design sharp, scalable graphics that looked great on any device. Moreover, its prototyping features enabled us to simulate user interactions and transitions, providing us with an interactive preview of our UI's look and feel.
 
+Here's an example of a complex design we were able to create thanks to Figma:
+![Koala Graph](src/Design/XRP_Koala_Graph.png)
+
 Figma made it easy to share assets among team members, ensuring consistency across our design. Components and design tokens could be reused, which maintained a uniform aesthetic throughout Koala Pouch's interface. 
 
 The efficiency and flexibility Figma provided significantly contributed to the delightful design experience that Koala Pouch offers.
