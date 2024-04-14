@@ -132,7 +132,7 @@ function Main({userSeed, public_key}) {
   
 
   // Placeholder content for contacts and transactions
-  const contactsList = ['Alice', 'Bob', 'Charlie'];
+  const contactsList = ['Colin', 'Kyle', 'Alex', 'Nick'];
   // const transactionHistoryList = ['Transaction 1', 'Transaction 2', 'Transaction 3'];
 
 
