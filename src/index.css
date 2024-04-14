@@ -428,3 +428,129 @@ body{
   text-decoration: none;
   cursor: pointer;
 }
+
+/* Settings.js */
+#mainAccount{
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+#mainAccountInfo{
+  position: relative;
+  font-size: 4rem;
+  animation: fadeIn 3s ease forwards; /* Apply fadeIn animation */
+  color: #724330;
+  border-bottom: 2px solid #724330;;
+}
+#alignPublicKey{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#publicKeyText{
+  position: relative;
+  font-size: 2rem;
+  right: 10vw;
+  top: 10vh;
+  margin: 0;
+  opacity: 0; /* Initially hide the element */
+  animation: fadeIn 3s ease forwards; /* Apply fadeIn animation */
+  animation-delay: 1s;
+  color: #724330;
+}
+#publicKey{
+  position: relative;
+  font-size: 2rem;
+  top: 10vh;
+  margin: 0;
+  border-bottom: #724330 solid 2px;
+  opacity: 0; /* Initially hide the element */
+  animation: fadeIn 3s ease forwards; /* Apply fadeIn animation */
+  animation-delay: 1s;
+  color: #724330;
+}
+
+#alignPrivateKey{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#privateKeyText{
+  position: relative;
+  font-size: 2rem;
+  right: 10vw;
+  top: 20vh;
+  margin: 0;
+  opacity: 0; /* Initially hide the element */
+  animation: fadeIn 3s ease forwards; /* Apply fadeIn animation */
+  animation-delay: 1.5s;
+  color: #724330;
+}
+
+#privateKey{
+  position: relative;
+  font-size: 2rem;
+  top: 20vh;
+  margin: 0;
+  border-bottom: #724330 solid 2px;
+  opacity: 0; /* Initially hide the element */
+  animation: fadeIn 3s ease forwards; /* Apply fadeIn animation */
+  animation-delay: 1.5s;
+  color: #724330;
+}
+#alignSeedKey{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#seedKeyText{
+  position: relative;
+  font-size: 2rem;
+  right: 10vw;
+  top: 30vh;
+  margin: 0;
+  opacity: 0; /* Initially hide the element */
+  animation: fadeIn 3s ease forwards; /* Apply fadeIn animation */
+  animation-delay: 2s;
+  color: #724330;
+}
+
+#seedKey{
+  position: relative;
+  font-size: 2rem;
+  top: 30vh;
+  margin: 0;
+  border-bottom: #724330 solid 2px;
+  opacity: 0; /* Initially hide the element */
+  animation: fadeIn 3s ease forwards; /* Apply fadeIn animation */
+  animation-delay: 2s;
+  color: #724330;
+}
+
+#devLetter{
+  position: relative;
+  color: #3f9736;
+  top: 40vh;
+  font-size: 1.25rem;
+  opacity: 0;
+  animation: fadeIn 3s ease forwards; /* Apply fadeIn animation */
+  animation-delay: 2.25s;
+  font-family: "Comic Sans MS", cursive;
+}
+
+#socials{
+  font-family: "Comic Sans MS", cursive;
+  color: #3f9736;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start opacity from 0 */
+  }
+  to {
+    opacity: 1; /* End opacity at 1 */
+  }
+}
