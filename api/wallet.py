@@ -85,21 +85,29 @@ def send_xrp(seed, amount, dest_public_key):
 
     return response
 
-def send_transaction_data(seed):
-    user_key = get_public_key_from_seed(seed)
-    if user_key not in transaction_queue.keys():
-        return []
-    tx_data = transaction_queue[user_key]
-    transaction_list = []
-    for transaction in tx_data:
-        is_sent = transaction["Sender"] == user_key
-        send_data = {
-            "Other" : transaction["Receiver"] if transaction["Sender"] == user_key else transaction["Sender"],
-            "Amount" : transaction["Amount"],
-            "isSentTransaction" : is_sent
-        }
-        transaction_list.append(send_data)
-    return transaction_list
+def last_transaction(seed):
+    client = xrpl.clients.JsonRpcClient(testnet_url)
+    try:
+        last_transaction_obj = xrpl.account.get_latest_transaction(seed.address, client) #Gets the data in the form of a "Response" Object
+        parse_data = parse_transaction_data(last_transaction_obj) #Calls to parse response object
+        if seed.seed in transaction_queue:
+            transaction_queue[seed.seed].append(parse_data)  #Adds transaction to queue
+            save_transaction_history(transaction_queue) #saves transaction history
+        return parse_data
+    except xrpl.asyncio.clients.XRPLRequestFailureException as e:
+        return "Failed to fetch last transaction: " + e
+    
+#Parses through the Response object and gets the transaction data
+def parse_transaction_data(transaction_obj):
+    transaction = transaction_obj.result["transactions"][0] #Goes through Response object and pulls Transaction data
+    tx = transaction["tx"] #Finds specific last transaction data under "tx"
+    transaction_data = { #stores the data in a dictionary
+        "Sender" : get_public_key_from_seed(tx["Account"]), #gets public key
+        "Amount" : tx["Amount"],
+        "Receiver" : get_public_key_from_seed(tx["Destination"]), #gets public key
+        "Hash" : tx["hash"]
+    }
+    return transaction_data
 
 def get_balance(public_key):
     client = xrpl.clients.JsonRpcClient(testnet_url)
