@@ -172,11 +172,9 @@ function Main({userSeed, public_key}) {
         <h2 className="header">Last Transaction</h2>
         <ul className="list">
         {Object.entries(transactionInfo).map(([key, value]) => (
-        key === "Amount" ?
-        <li key={key}>{`${value > 0 ? "+" : "-"}${Math.abs(value) / 1000000} \n\nRecipient: ${transactionInfo.Other}`}</li>
-        :
-        null
-        ))}
+        key === "Amount" ? <li key={key}> 
+        {`${transactionInfo.isSentTransaction ? "-" : "+"}${Math.abs(value) / 1000000} Recipient: ${transactionInfo.Other}`}
+        </li> : null))}
         </ul>
       </div>
       
