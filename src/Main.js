@@ -42,6 +42,21 @@ function Main({userSeed}) {
     }
   };
 
+  const send_xrp = async () => {
+    try {
+      const response = await axios.post(`${serverUrl}/send_xrp`, { seed: userSeed, amount: amountToSend, recipient: recipientPublicKey });
+      if (!response.data) {
+        throw new Error(`Response data not found`);
+      }
+      const transactionHistoryList = response.data; // Accessing the data property directly
+
+    } catch (error) {
+      console.error("Failed to fetch balance:", error);
+      // Handle the error according to your app's requirements
+    }
+    console.log("Sent Money");
+  };
+
   useEffect(() => {
     // Fetch balance using userSeed here
     getBalance();
@@ -63,6 +78,7 @@ function Main({userSeed}) {
     // Here you would send the data to the backend
     // For now, we'll just log it to the console and close the modal
     console.log('Sending', amountToSend,'\nto', recipientPublicKey);
+    send_xrp();
     // Close the modal
     setShowSendModal(false);
   };
