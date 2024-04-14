@@ -5,7 +5,7 @@ import KoalaGraph from './Design/XRP_Koala_Graph.png';
 
 const serverUrl = 'http://127.0.0.1:5000'; // Update with your server URL
 
-
+// Main component
 function Main({userSeed, public_key}) {
   // State to store the balance
   const [balance, setBalance] = useState('');
@@ -22,6 +22,7 @@ function Main({userSeed, public_key}) {
   const [loadSend, setLoadSend] = useState(false);
   const [refresh, setRefresh] = useState(false);
 
+  // Function to simulate a refresh
   const simulateRefresh = () => {
     setIsRefreshing(true);
     // Delay the state change to false to simulate a refresh
@@ -46,6 +47,7 @@ function Main({userSeed, public_key}) {
     }
   };
 
+  // Function to fetch the balance from the backend
   const getTransaction = async () => {
     try {
       const response = await axios.post(`${serverUrl}/send_transaction_info`, { seed: userSeed });
@@ -60,6 +62,7 @@ function Main({userSeed, public_key}) {
     }
   };
 
+  // Function to fetch the balance from the backend
   const getBalanceOther = async () => {
     try {
       const response = await axios.post(`${serverUrl}/account_balance`, { pub_key: recipientPublicKey });
@@ -139,7 +142,7 @@ function Main({userSeed, public_key}) {
   const contactsList = ['Colin', 'Kyle', 'Alex', 'Nick'];
   // const transactionHistoryList = ['Transaction 1', 'Transaction 2', 'Transaction 3'];
 
-
+// Return the JSX to render
   return (
     <div id="mainContainer">
       {/* First Column */}
