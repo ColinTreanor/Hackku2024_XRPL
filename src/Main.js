@@ -13,6 +13,7 @@ function Main({userSeed}) {
   const [amountToSend, setAmountToSend] = useState('');
   const [transactionHistoryList, setTransactionHistory] = useState('');
 
+
   // Function to fetch the balance from the backend
   const getBalance = async () => {
     try {
@@ -26,6 +27,11 @@ function Main({userSeed}) {
       console.error("Failed to fetch balance:", error);
       // Handle the error according to your app's requirements
     }
+  };
+
+  function refresh_balance() {
+    getBalance();
+    console.log("Balance Updated");
   };
 
   const getTransactionHistory = async () => {
@@ -48,8 +54,6 @@ function Main({userSeed}) {
       if (!response.data) {
         throw new Error(`Response data not found`);
       }
-      const transactionHistoryList = response.data; // Accessing the data property directly
-
     } catch (error) {
       console.error("Failed to fetch balance:", error);
       // Handle the error according to your app's requirements
@@ -78,9 +82,10 @@ function Main({userSeed}) {
     // Here you would send the data to the backend
     // For now, we'll just log it to the console and close the modal
     console.log('Sending', amountToSend,'\nto', recipientPublicKey);
-    send_xrp();
+    await send_xrp();
     // Close the modal
     setShowSendModal(false);
+    refresh_balance();
   };
 
   // Placeholder content for contacts and transactions
