@@ -12,7 +12,7 @@ The Koala Pouch is a carefully designed and developed MVP from a 36-hour hackath
 
 - **Design**: Figma was used for its collaborative features, allowing real-time feedback during the design process. Along with it being a familiar platform for our team members, making for an easy transition between design and integration.
 - **Front End**: We chose JavaScript and React for the interactive UI, CSS for styling, and Axios for promise-based HTTP requests.
-- **Back End**: Python with Flask was selected for its simplicity and ease of use, along with XRPL for direct interactions with the XRP Ledger. All team members are very experience in Python so this allowed more time to be dedicated to learning other tools.
+- **Back End**: Python with Flask was selected for its simplicity and ease of use, along with XRPL for direct interactions with the XRP Ledger. All team members are very experienced with Python which allowed more time to be spent learning other tools.
 
 ### Learning Outcomes
 
@@ -25,13 +25,27 @@ Our repository is structured with clear dependency management and logical sectio
 
 ### Front-End Structure
 
-- Dependencies are managed through npm, ensuring modular and maintainable code.
-- Components are organized by feature, with clear naming conventions for ease of navigation.
+NPM provided us with a straightforward approach to manage the numerous packages our project depends upon. It allowed us to:
+
+- Install packages like `create-react-app`, `redux`, `react-redux`, `axios`, `bootstrap`, `@mui/material`, `@emotion/react`, and `@emotion/styled` with a simple command.
+- Ensure consistent package versions across different development environments, thanks to the `package.json` and `package-lock.json` files.
+- Easily update dependencies with its versioning and update features, keeping our application secure and up-to-date with the latest features and fixes.
+
+NPM's immense registry, the largest for any programming language, provided us with a plethora of options to choose from. This gave us the flexibility to select the most suitable packages for our needs, from state management to UI components.
+
+Our team was already familiar with JavaScript and the Node.js environment, making NPM a natural fit. Its integration with the Node.js ecosystem meant that we could use NPM scripts to automate our workflow, run tests, and start our development servers, all from the command line.
+
+While there are alternatives like Yarn, we found NPM's recent improvements in speed and reliability, and its native integration with the Node.js environment, to be decisive factors. With its wide adoption, community support, and ease of integration into our existing toolchain, NPM was the clear choice for managing our project's front-end dependencies.
 
 ### Back-End Structure
 
-- Python modules are used to encapsulate different functionalities, with Flask blueprints managing different routes.
-- Each module, function, and class is documented with comments explaining its purpose and usage.
+Flask is a micro-framework, which means it is minimalistic by design, without sacrificing the power and flexibility needed for complex applications. This simplicity allowed us to create a lightweight and maintainable back-end service, which was crucial for the rapid development pace of a hackathon project.
+
+Our team's proficiency in Python played a significant role in choosing Flask. Since Python is known for its readable syntax and extensive libraries, Flask allowed us to leverage these benefits, making our development process smoother and more efficient. Additionally, Flask's compatibility with various deployment options gave us the flexibility to consider multiple hosting services for future deployment. 
+
+Flask's simplicity and the team's familiarity with Python significantly accelerated our development speed. It allowed us to focus on the logic and features specific to the XRPL without getting bogged down by the framework itself.
+
+By integrating Flask into our tech stack, we ensured that Koala Pouch's back-end was not only robust and efficient but also a product of a framework that resonates with our team's expertise and the Python community's best practices.
 
 ## Quick Links
 - [Figma Designs](https://www.figma.com)
