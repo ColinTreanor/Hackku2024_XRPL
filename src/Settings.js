@@ -6,7 +6,7 @@ const serverUrl = 'http://127.0.0.1:5000';
 function Settings( {userSeed} ) {
 
   const [publicKey, setPublicKey] = useState('');
-  const [privateKey, setPrivateKey] = useState('');
+  const [address, setAddress] = useState('');
   const [seedKey, setSeedKey] = useState('');
   
   const get_account_info = async () => {
@@ -39,17 +39,17 @@ function Settings( {userSeed} ) {
         <h2 id="publicKeyText">Public Key:</h2>
         <h2 id="publicKey">{publicKey}</h2>
       </div>
-      <div id="alignPrivateKey">
-        <h2 id="privateKeyText">Private Key:</h2>
-        <h2 id="privateKey">Mock Key</h2>
+      <div id="alignAddress">
+        <h2 id="addressText">Address:</h2>
+        <h2 id="address">Mock Address</h2>
       </div>
       <div id="alignSeedKey">
-        <h2 id="seedKeyText">Seed Key:</h2>
+        <h2 id="seedKeyText">Seed:</h2>
         <h2 id="seedKey">Mock Key</h2>
       </div>
       <div id="devLetter">
         <p>Hello, this is a message from the devs!<br />Thank you
-        so much for utilization our application for your Crypto needs. Feel
+        so much for utilizing our application for your Crypto needs. Feel
         free to use any of the features on this platform at your convienence. If you
         have any questions, feel free to ask!</p>
         <p id="socials">info@koalawalla.com</p>

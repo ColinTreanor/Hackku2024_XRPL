@@ -29,6 +29,7 @@ body{
   position: absolute;
   z-index: 5;
 }
+
 #sproutLeft{
   position: relative;
   top: 23vh;
@@ -472,16 +473,16 @@ body{
   color: #724330;
 }
 
-#alignPrivateKey{
+#alignAddress{
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-#privateKeyText{
+#addressText{
   position: relative;
   font-size: 2rem;
-  right: 10vw;
+  right: 9.5vw;
   top: 20vh;
   margin: 0;
   opacity: 0; /* Initially hide the element */
@@ -490,7 +491,7 @@ body{
   color: #724330;
 }
 
-#privateKey{
+#address{
   position: relative;
   font-size: 2rem;
   top: 20vh;
