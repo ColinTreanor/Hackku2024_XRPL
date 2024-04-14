@@ -88,6 +88,8 @@ def send_xrp(seed, amount, dest_public_key):
 def send_transaction_data(seed):
     user_key = get_public_key_from_seed(seed)
     tx_data = transaction_queue[user_key]
+    if not tx_data:
+        return []
     transaction_list = []
     for transaction in tx_data:
         is_sent = transaction["Sender"] == user_key
@@ -110,6 +112,4 @@ def get_balance(public_key):
     balance = float(balance) / 1_000_000
     
     return balance
-
-account = print(get_account("sEdVLQ9axjHthHAzBrnLqeTRPvxg3q7"))
 
