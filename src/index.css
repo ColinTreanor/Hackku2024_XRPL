@@ -5,6 +5,7 @@ body{
   margin: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  z-index: 0;
 }
 
 #koalaTitle {
@@ -148,7 +149,6 @@ body{
 .content {
   flex: 1;
   background-color: #f0f0f0; /* Background color of the content area */
-  padding: 20px; /* Adjust padding as needed */
   display: flex;
   justify-content: center;
   overflow-y: auto;
@@ -428,6 +428,7 @@ body{
   flex-direction: column;
   overflow-y: hidden;
   position: relative;
+  z-index: 0;
 }
 #koalaOnTree{
   position: absolute;
@@ -435,7 +436,7 @@ body{
   top: 3vh;
   opacity: 0;
   animation: fadeIn 2s ease forwards; /* Apply fadeIn animation */
-  z-index: 0;
+  z-index: 10;
 }
 #mainAccountInfo{
   position: relative;
