@@ -30,6 +30,8 @@ function Login({ onPageChange, onSetUserSeed, onSetPublicKey}) {
   const [isHovered, setIsHovered] = useState(false);
   const [userInput, setUserInput] = useState('');
   const [error, setError] = useState('');
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
+  const [loadingCreate, setLoadingCreate] = useState(false);
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -57,10 +59,14 @@ function Login({ onPageChange, onSetUserSeed, onSetPublicKey}) {
         return;
       }
       //const response = await axios.post(`api/${serverUrl}/login`, { seed: userInput, value: 'newseed' });
+      setLoadingSubmit(true);
+      console.log(loadingSubmit)
       const response = await axios.post(`${serverUrl}/login`, { seed: userInput});
       console.log("Wallet created:", response.data);
       onSetUserSeed(userInput); // Update user seed state
       onSetPublicKey(response.data["public_key"])//Update user public key state
+      setLoadingSubmit(false);
+
   onPageChange('Main');
 
     } catch (error) {
@@ -72,10 +78,13 @@ function Login({ onPageChange, onSetUserSeed, onSetPublicKey}) {
 
   const signUpSeed = async () => {
     try{
+      setLoadingCreate(true);
       const response = await axios.post(`${serverUrl}/login`, { seed: ""});
       console.log("Wallet created:", response.data);
       onSetUserSeed(response.data["secret"]); // Update user seed state
       onSetPublicKey(response.data["public_key"]); //Update user public key state
+      setLoadingCreate(false);
+
   onPageChange('Main');
 
     } catch (error){
@@ -111,12 +120,14 @@ function Login({ onPageChange, onSetUserSeed, onSetPublicKey}) {
       </div>
       <div id="centerSubmitButton">
         <button className="submitSeed" type="text" onClick={loginSeed}>Login</button>
+        {loadingSubmit && (<p id="loadingSubmit">Loading...</p>)}
       </div>
       <div id="centerOr">
       <h2 id="optionOr">Or</h2>
       </div>
       <div id="newSeedContainer">
       <button id="newSeed" type="button" onClick={signUpSeed}>Create New Account</button>
+        {loadingCreate && (<p id="loadingCreate">Loading...</p>)}
       </div>
     </div>
   );

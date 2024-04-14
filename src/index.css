@@ -261,12 +261,17 @@ body{
   border: outset 2px #949393;
 }
 .submitSeed:hover{
-
   border: inset 3px #949393;
 }
 #centerSubmitButton{
   display: flex;
   justify-content: center;
+}
+#loadingSubmit { 
+  top: 5vh;
+  left: 2vh;
+  position: relative;
+  font-family: "Comic Sans MS", cursive;
 }
 
 #centerOr{
@@ -279,20 +284,29 @@ body{
   color: #442519
 }
 #newSeedContainer{
+  position: relative;
   display: flex;
   justify-content: center;
 }
 #newSeed{
+  position: absolute;
+  top: 2vh;
   border-radius: .25rem;
   font-family: "Comic Sans MS", cursive;
   border: 2px outset #949393; /* Set initial border */
-  
+  height: 2rem;
 }
 
 #newSeed:hover {
   border: 3px inset #949393;
 }
 
+#loadingCreate {
+  top: 5vh;
+  left: 2vw;
+  position: relative;
+  font-family: "Comic Sans MS", cursive;
+}
 /* Styling for Main */
 
 #mainContainer {
