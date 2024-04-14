@@ -67,7 +67,6 @@ By integrating Flask into our tech stack, we ensured that Koala Walla's back-end
 - [Figma Designs](https://www.figma.com)
 - [XRPL Transaction Methods](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html)
 - [Python Official Website](https://www.python.org/downloads/)
-Link to Devpost:
 - [KoalaWalla Devpost](https://devpost.com/software/koala-walla)
 
 ## Hackathon Strategy
