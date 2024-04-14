@@ -124,7 +124,7 @@ function Main({userSeed, public_key}) {
       {/* Second Column */}
       <div id="centerColumn" className="column">
         <div className="centerTopContainer">
-          <h1 className="balance">Balance: ${balance}</h1>
+          <h1 className="balance">Balance: {balance}XRP</h1>
           <button className="button" onClick={handleSendClick}>Send</button>
           <button className="button" onClick={() => {}}>Sell</button>
         </div>

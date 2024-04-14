@@ -60,7 +60,7 @@ function Login({ onPageChange, onSetUserSeed, onSetPublicKey}) {
       const response = await axios.post(`${serverUrl}/login`, { seed: userInput});
       console.log("Wallet created:", response.data);
       onSetUserSeed(userInput); // Update user seed state
-      onSetPublicKey(response.data["public_key"])
+      onSetPublicKey(response.data["public_key"])//Update user public key state
   onPageChange('Main');
 
     } catch (error) {
@@ -75,6 +75,7 @@ function Login({ onPageChange, onSetUserSeed, onSetPublicKey}) {
       const response = await axios.post(`${serverUrl}/login`, { seed: ""});
       console.log("Wallet created:", response.data);
       onSetUserSeed(response.data["secret"]); // Update user seed state
+      onSetPublicKey(response.data["public_key"]); //Update user public key state
   onPageChange('Main');
 
     } catch (error){
