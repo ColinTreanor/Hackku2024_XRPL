@@ -31,6 +31,8 @@ def save_names(history):
 # Load transaction history from file
 names_queue = load_names()
 
+names = {"Colin": "ED190F2BDD7DB80A927182CAFBC82075F97123447A39F9BDC25DE5592AF20025C3", "Kyle":  "ED7F667A6F3944022B53E29370330DA78FD8FA65736E4F14240DFFC00E5F7C76EB", "Alex": "ED2AA9D63B07E2DEE4AE58DB7FAB5D377BCAC5DBAFCA45DF63C4CA0D82916AD110", "Nick": "ED41B8E708DE09D6571EEA591EA397A5A1F136128686BE475E7DA059A0E5C19490"}
+
 # Endpoint for user authentication
 @app.route('/login', methods=['POST'])
 def login():
@@ -50,6 +52,8 @@ def send_xrp():
     seed = data.get('seed')
     amount = data.get('amount')
     public_key = data.get('recipient')
+    if len(public_key) < 66:
+        public_key = names[public_key]
     if seed and amount and public_key:
         response = wallet.send_xrp(seed, amount, public_key)
         return jsonify(response)

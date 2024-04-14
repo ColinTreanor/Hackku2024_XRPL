@@ -92,7 +92,7 @@ function Main({userSeed, public_key}) {
   useEffect(() => {
     // Fetch balance using userSeed here
     getBalance();
-    getTransactionHistory();
+    // getTransactionHistory();
   }, [userSeed]); // Depend on userSeed so this runs when it changes
 
    // Function to handle the send button click
