@@ -2,7 +2,7 @@
 
 ![Koala Wallet Logo](src/Design/Koala_Body.png)  Howdy Mate!
 
-Welcome to the Koala Pouch GitHub repository! This repository contains the source code for a digital wallet tailored for the XRP Ledger (XRPL), designed to provide a seamless experience for managing your XRP assets, user favorite way of handling their marsupial money!
+Welcome to the Koala Pouch GitHub repository! This repository contains the source code for a digital wallet tailored for the XRP Ledger (XRPL), designed to provide a seamless experience for managing your XRP assets, user's favorite way of handling their marsupial money!
 
 ## Project Overview
 
