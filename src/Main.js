@@ -11,6 +11,7 @@ function Main({userSeed}) {
   // States for the form inside the modal
   const [recipientPublicKey, setRecipientPublicKey] = useState('');
   const [amountToSend, setAmountToSend] = useState('');
+  const [transactionHistoryList, setTransactionHistory] = useState('');
 
   // Function to fetch the balance from the backend
   const getBalance = async () => {
@@ -27,9 +28,24 @@ function Main({userSeed}) {
     }
   };
 
+  const getTransactionHistory = async () => {
+    try {
+      const response = await axios.post(`${serverUrl}/send_transaction_info`, { seed: userSeed });
+      if (!response.data) {
+        throw new Error(`Response data not found`);
+      }
+      const transactionHistoryList = response.data; // Accessing the data property directly
+      setTransactionHistory(transactionHistoryList);
+    } catch (error) {
+      console.error("Failed to fetch balance:", error);
+      // Handle the error according to your app's requirements
+    }
+  };
+
   useEffect(() => {
     // Fetch balance using userSeed here
     getBalance();
+    getTransactionHistory();
   }, [userSeed]); // Depend on userSeed so this runs when it changes
 
    // Function to handle the send button click
@@ -53,7 +69,7 @@ function Main({userSeed}) {
 
   // Placeholder content for contacts and transactions
   const contactsList = ['Alice', 'Bob', 'Charlie'];
-  const transactionHistoryList = ['Transaction 1', 'Transaction 2', 'Transaction 3'];
+  // const transactionHistoryList = ['Transaction 1', 'Transaction 2', 'Transaction 3'];
 
 
   return (
@@ -86,9 +102,7 @@ function Main({userSeed}) {
       <div id="rightColumn" className="column">
         <h2 className="header">Transaction History</h2>
         <ul className="list">
-          {transactionHistoryList.map((transaction, index) => (
-            <li key={index} className="listItem">{transaction}</li>
-          ))}
+          ${transactionHistoryList}
         </ul>
       </div>
 
