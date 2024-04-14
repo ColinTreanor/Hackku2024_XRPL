@@ -142,9 +142,6 @@ function Main({userSeed, public_key}) {
           ${transactionHistoryList}
         </ul>
       </div>
-
-      {/* "Send" button event handler */}
-      <button className="button" onClick={handleSendClick}>Send</button>
       
       {/* Send Modal */}
       {showSendModal && (
