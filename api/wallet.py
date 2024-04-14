@@ -87,9 +87,9 @@ def send_xrp(seed, amount, dest_public_key):
 
 def send_transaction_data(seed):
     user_key = get_public_key_from_seed(seed)
-    tx_data = transaction_queue[user_key]
-    if not tx_data:
+    if user_key not in transaction_queue.keys():
         return []
+    tx_data = transaction_queue[user_key]
     transaction_list = []
     for transaction in tx_data:
         is_sent = transaction["Sender"] == user_key
