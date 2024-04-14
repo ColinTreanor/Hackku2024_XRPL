@@ -43,7 +43,8 @@ def get_account(seed):
     
 #Gets an account's information such as public_key, address, etc.
 def get_info(seed):
-    account_id = seed.address
+    pub_key = get_public_key_from_seed(seed)
+    account_id = get_address_from_public_key(pub_key)
     client = xrpl.clients.JsonRpcClient(testnet_url)
     acct_info = xrpl.models.requests.account_info.AccountInfo(
         account=account_id,

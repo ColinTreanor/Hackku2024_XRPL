@@ -3,7 +3,7 @@ import axios from 'axios';
 import './index.css';
 const serverUrl = 'http://127.0.0.1:5000'; // Update with your server URL
 
-function Main({userSeed}) {
+function Main({userSeed, public_key}) {
   // State to store the balance
   const [balance, setBalance] = useState('');
   // State to control the visibility of the send modal
@@ -17,7 +17,7 @@ function Main({userSeed}) {
   // Function to fetch the balance from the backend
   const getBalance = async () => {
     try {
-      const response = await axios.post(`${serverUrl}/account_balance`, { seed: userSeed });
+      const response = await axios.post(`${serverUrl}/account_balance`, { pub_key: public_key });
       if (!response.data) {
         throw new Error(`Response data not found`);
       }

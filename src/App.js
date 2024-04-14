@@ -15,9 +15,15 @@ import Login from './Login';
 function App() {
   const [currentPage, setCurrentPage] = useState('Login');
   const [userSeed, setUserSeed] = useState('');
+  const [public_key, setPublicKey] = useState('');
+  
 
   const onSetUserSeed = (seed) => {
     setUserSeed(seed);
+};
+
+  const onSetPublicKey = (key) => {
+    setPublicKey(key);
 };
 
   const handlePageChange = (page) => {
@@ -57,9 +63,9 @@ function App() {
           <img src={SproutLeft} alt="Sprout 1" id="sproutLeft"/>
         </div>
         <div className="content">
-        {currentPage === 'Settings' && <Settings />}
-        {currentPage === 'Main' && <Main userSeed={userSeed} />}
-        {currentPage === 'Login' && <Login onPageChange={handlePageChange} onSetUserSeed={setUserSeed} />}
+        {currentPage === 'Settings' && <Settings userSeed={userSeed}/>}
+        {currentPage === 'Main' && <Main userSeed={userSeed} public_key={public_key} />}
+        {currentPage === 'Login' && <Login onPageChange={handlePageChange} onSetUserSeed={setUserSeed} onSetPublicKey={setPublicKey}/>}
       </div>
         <div className="border-right">
 
