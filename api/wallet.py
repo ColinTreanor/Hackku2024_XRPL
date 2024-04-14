@@ -40,18 +40,14 @@ def create_account():
 def get_account(seed):
     wallet = xrpl.wallet.Wallet.from_seed(seed)
     return wallet
-    
-#Gets an account's information such as public_key, address, etc.
+
 def get_info(seed):
-    pub_key = get_public_key_from_seed(seed)
-    account_id = get_address_from_public_key(pub_key)
-    client = xrpl.clients.JsonRpcClient(testnet_url)
-    acct_info = xrpl.models.requests.account_info.AccountInfo(
-        account=account_id,
-        ledger_index="validated"
-    )
-    response = client.request(acct_info)
-    return response.result['account_data']
+    info = {
+        "public_key" : get_public_key_from_seed(seed),
+        "address" : get_account(seed).address,
+        "seed" : seed
+    }
+    return info
 
 def get_address_from_public_key(public_key):
     return xrpl.core.keypairs.derive_classic_address(public_key)
@@ -115,5 +111,5 @@ def get_balance(public_key):
     
     return balance
 
-#account = get_public_key_from_seed("sEdVLQ9axjHthHAzBrnLqeTRPvxg3q7")
-#print(account)
+account = print(get_account("sEdVLQ9axjHthHAzBrnLqeTRPvxg3q7"))
+
