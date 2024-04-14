@@ -65,16 +65,17 @@ def parse_transaction_data(transaction_obj):
     transaction = transaction_obj.result["transactions"][0] #Goes through Response object and pulls Transaction data
     tx = transaction["tx"] #Finds specific last transaction data under "tx"
     transaction_data = { #stores the data in a dictionary
-        "Sender" : tx["Account"], #gets public key
+        "Sender" : tx["Account"], #gets address
         "Amount" : tx["Amount"],
-        "Receiver" : tx["Destination"], #gets public key
+        "Receiver" : tx["Destination"], #gets address
         "Hash" : tx["hash"]
     }
     return transaction_data
 
 def send_transaction_data(seed):
     last_tx = last_transaction(seed)
-    is_sent = last_tx["Sender"] == seed
+    address = get_info(seed)['address']
+    is_sent = last_tx["Sender"] == address
     send_data = {
         "Other" : last_tx["Receiver"] if last_tx["Sender"] == seed else last_tx["Sender"],
         "Amount" : last_tx["Amount"],
@@ -94,10 +95,3 @@ def get_balance(public_key):
     balance = float(balance) / 1_000_000
     
     return balance
-
-account1 = create_account()
-account2 = create_account()
-
-send_xrp(account1.seed, 500, account2.public_key)
-
-print(last_transaction(account1.seed))
