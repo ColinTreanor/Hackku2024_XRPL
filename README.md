@@ -51,6 +51,7 @@ While there are alternatives like Yarn, we found NPM's recent improvements in sp
 
 ### Back-End Structure
 
+Flask:
 Flask is a micro-framework, which means it is minimalistic by design, without sacrificing the power and flexibility needed for complex applications. This simplicity allowed us to create a lightweight and maintainable back-end service, which was crucial for the rapid development pace of a hackathon project.
 
 Our team's proficiency in Python played a significant role in choosing Flask. Since Python is known for its readable syntax and extensive libraries, Flask allowed us to leverage these benefits, making our development process smoother and more efficient. Additionally, Flask's compatibility with various deployment options gave us the flexibility to consider multiple hosting services for future deployment. 
