@@ -46,6 +46,8 @@ function App() {
               <img src={SettingsIcon} alt="Settings Icon" id="buttonPng"/>
             </button>
             <p id="settingsLabel">Settings</p>
+            <p id="borderDouble"></p>
+
           </>
         )}
         {currentPage !== 'Login' && (
