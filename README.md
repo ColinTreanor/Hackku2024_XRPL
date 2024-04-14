@@ -1,4 +1,4 @@
-# Koala Wallet: An XRPL Digital Wallet
+# Koala Pouch: An XRPL Digital Wallet
 
 ![Koala Wallet Logo](src/Design/Koala_Body.png)  Howdy Mate!
 
