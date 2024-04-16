@@ -3,7 +3,7 @@ import axios from 'axios';
 import './index.css';
 import KoalaGraph from './Design/XRP_Koala_Graph.png';
 
-const serverUrl = 'https://infinite-castle-31682-0f660ee9d9ff.herokuapp.com/'; // Update with your server URL
+const serverUrl = 'http://127.0.0.1:5000'; // Update with your server URL
 
 // Main component
 function Main({userSeed, public_key}) {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-const serverUrl = 'https://infinite-castle-31682-0f660ee9d9ff.herokuapp.com/'; // Update with your server URL
+const serverUrl = 'http://127.0.0.1:5000'; // Update with your server URL
 
 /* 
 Functionality:
