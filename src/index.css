@@ -113,15 +113,15 @@ body{
   top: 5vh;
   font-size: 2rem;
   font-family: "Lucida Console";
-  width: 8.75vw;
+  width: 10.5vw;
   border-bottom: 2px solid black; /* Outer border */
   animation: fadeIn 1.5s ease forwards;
 }
 #borderDouble{
   position: absolute;
-  right: 4.5vw;
+  right: 5vw;
   top: 13.25vh;
-  width: 7vw;
+  width: 8vw;
   border-bottom: 2px solid black; /* Outer border */
   animation: fadeIn 1.5s ease forwards;
 }
@@ -273,7 +273,7 @@ body{
   top: 15vh;
   left: 5vw;
   position: relative;
-  font-family: v
+  font-family: "Lucida Console";
 }
 
 #centerOr{
@@ -491,8 +491,8 @@ body{
 
 #loadingSend{
   position: relative;
-  bottom: 6vh;
-  left: 32vh;
+  bottom: 3vh;
+  left: 49vh;
 }
 .balance {
   position: relative;
