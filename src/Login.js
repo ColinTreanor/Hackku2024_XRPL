@@ -53,7 +53,7 @@ function Login({ onPageChange, onSetUserSeed, onSetPublicKey}) {
   const handleChange = (event) => {
     setUserInput(event.target.value);
   };
-// Function to create a new wallet
+// Function to login to existing wallet
   const loginSeed = async () => {
     try {
       if (!userInput || userInput.length !== 31) {
@@ -64,6 +64,7 @@ function Login({ onPageChange, onSetUserSeed, onSetPublicKey}) {
       setLoadingSubmit(true);
       console.log(loadingSubmit) //debugging
       const response = await axios.post(`${serverUrl}/login`, { seed: userInput});
+      console.log("Response:", response);
       console.log("Wallet created:", response.data);
       onSetUserSeed(userInput); // Update user seed state
       onSetPublicKey(response.data["public_key"])//Update user public key state
@@ -83,6 +84,7 @@ function Login({ onPageChange, onSetUserSeed, onSetPublicKey}) {
   const signUpSeed = async () => {
     try{
       setLoadingCreate(true);
+      console.log("Working")
       const response = await axios.post(`${serverUrl}/login`, { seed: ""});
       console.log("Wallet created:", response.data);
       onSetUserSeed(response.data["secret"]); // Update user seed state
