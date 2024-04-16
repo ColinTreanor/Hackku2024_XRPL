@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import KoalaOnTree from './Design/Koala_on_Tree.png'; 
 
-const serverUrl = 'http://127.0.0.1:5000'; // Update with your server URL
+const serverUrl = 'https://colintreanor.github.io'; // Update with your server URL
 
 // Settings component
 function Settings( {userSeed} ) {

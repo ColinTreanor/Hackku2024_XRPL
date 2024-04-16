@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-const serverUrl = 'http://127.0.0.1:5000'; // Update with your server URL
+const serverUrl = 'https://colintreanor.github.io'; // Update with your server URL
 
 /* 
 Functionality:
