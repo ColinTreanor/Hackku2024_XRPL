@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-const serverUrl = 'https://colintreanor.github.io'; // Update with your server URL
+const serverUrl = 'https://infinite-castle-31682-0f660ee9d9ff.herokuapp.com/'; // Update with your server URL
 
 /* 
 Functionality:
