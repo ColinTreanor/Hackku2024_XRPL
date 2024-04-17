@@ -158,7 +158,7 @@ function Main({userSeed, public_key}) {
       {/* Second Column */}
       <div id="centerColumn" className="column">
         <div>
-          <h1 className="balance">Balance: {balance}</h1>
+          <h1 className="balance">Balance: {parseFloat(balance).toFixed(2)}</h1>
           <h2 id="unitToken">XRP</h2>
           <button id="buttonOne" onClick={handleSendClick}>Send</button>
           <button id="buttonTwo" onClick={handleSellClick}>Sell</button>
