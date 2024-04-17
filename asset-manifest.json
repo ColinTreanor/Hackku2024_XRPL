@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/Hackku2024_XRPL/static/css/main.7284de31.css",
+    "main.js": "/Hackku2024_XRPL/static/js/main.3c97cf77.js",
+    "static/js/453.6f897dd4.chunk.js": "/Hackku2024_XRPL/static/js/453.6f897dd4.chunk.js",
+    "static/media/XRP_Koala_Graph.png": "/Hackku2024_XRPL/static/media/XRP_Koala_Graph.78ac221e430a6a8f4fdf.png",
+    "static/media/Koala_on_Tree.png": "/Hackku2024_XRPL/static/media/Koala_on_Tree.e3b786273dc899abe60f.png",
+    "static/media/Koala_Body.png": "/Hackku2024_XRPL/static/media/Koala_Body.ed1db41f6341c30eda6a.png",
+    "static/media/Sprout2.png": "/Hackku2024_XRPL/static/media/Sprout2.41a3d60ab7f9d81c5cd7.png",
+    "index.html": "/Hackku2024_XRPL/index.html",
+    "main.7284de31.css.map": "/Hackku2024_XRPL/static/css/main.7284de31.css.map",
+    "main.3c97cf77.js.map": "/Hackku2024_XRPL/static/js/main.3c97cf77.js.map",
+    "453.6f897dd4.chunk.js.map": "/Hackku2024_XRPL/static/js/453.6f897dd4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7284de31.css",
+    "static/js/main.3c97cf77.js"
+  ]
+}
